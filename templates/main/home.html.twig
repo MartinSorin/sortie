@@ -68,12 +68,12 @@
             {% for trip in trips %}
                 <tr>
                     <td>{{ trip.name }}</td>
-                    <td>{{ trip.dateTimeStart }}</td>
-                    <td>{{ trip.dateLimitInscription }}</td>
-                    <td>{{ trip.nbInscriptionMax }}</td>
-                    <td>{{ trip.state }}</td>
-                    <td>{{ inscrit }}</td>
-                    <td>{{ trip.organiser }}</td>
+                    <td>{{ trip.dateTimeStart|date("d/m/Y H:i") }}</td>
+                    <td>{{ trip.dateLimitInscription|date("d/m/Y") }} }}</td>
+                    <td>{{ trip.nbInscriptionsMax }}</td>
+                    <td>{{ trip.state.wording }}</td>
+                    <td>Inscrit</td>
+                    <td>{{ trip.organiser.firstname }}</td>
                     <td>actions</td>
                 </tr>
             {% endfor %}

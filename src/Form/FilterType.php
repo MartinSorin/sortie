@@ -16,7 +16,7 @@ class FilterType extends AbstractType
     {
         $builder
             ->add('campus', EntityType::class, ['label' => 'Campus', 'choice_label' => 'name', 'class' => 'App\Entity\Campus'])
-            ->add('search', TextType::class, ['label' => 'Le nom de la sortie contient', 'mapped' => false])
+            ->add('search', TextType::class, ['label' => 'Le nom de la sortie contient', 'mapped' => false, 'attr' => ['placeholder' => 'search']])
             ->add('start', DateType::class, ['label' => 'Entre', 'mapped' => false])
             ->add('end', DateType::class, ['label' => 'et', 'mapped' => false])
             ->add('organizer', CheckboxType::class, ['label' => 'Sorties dont je suis l\'organisateur/trice', 'mapped' => false])
