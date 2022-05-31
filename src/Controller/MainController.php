@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
 {
-    #[Route('/', name: 'home')]
+    #[Route('/home', name: 'home')]
     public function home(TripRepository $tripRepository, CampusRepository $campusRepository): Response
     {
         $trips = $tripRepository->findAll();
