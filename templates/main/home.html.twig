@@ -1,7 +1,86 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}} - Accueil{% endblock %}
+{% block title %}{{ parent() }} - Accueil{% endblock %}
 
 {% block main %}
-    <h1>BLOP</h1>
+
+    <h1>Acceuil</h1>
+
+    <div>
+        <h2>Filtrer les sorties</h2>
+
+        {{ form_start(form) }}
+        <div class="divform">
+            {{ form_label(form.campus) }}
+            {{ form_widget(form.campus) }}
+        </div>
+        <div class="divform">
+            {{ form_label(form.search) }}
+            {{ form_widget(form.search) }}
+        </div>
+        <div class="divform">
+            {{ form_label(form.start) }}
+            {{ form_widget(form.start) }}
+        </div>
+        <div class="divform">
+            {{ form_label(form.end) }}
+            {{ form_widget(form.end) }}
+        </div>
+        <div class="divform">
+            {{ form_label(form.organizer) }}
+            {{ form_widget(form.organizer) }}
+        </div>
+        <div class="divform">
+            {{ form_label(form.registered) }}
+            {{ form_widget(form.registered) }}
+        </div>
+        <div class="divform">
+            {{ form_label(form.notRegistered) }}
+            {{ form_widget(form.notRegistered) }}
+        </div>
+        <div class="divform">
+            {{ form_label(form.passed) }}
+            {{ form_widget(form.passed) }}
+        </div>
+
+        <div class="divform">
+            {{ form_rest(form) }}
+            <button>Rechercher</button>
+        </div>
+        {{ form_end(form) }}
+
+
+
+    </div>
+
+    <div>
+        <table>
+            <tr>
+                <th>Nom de la sortie</th>
+                <th>Date de la sortie</th>
+                <th>Clôture</th>
+                <th>inscrit/places</th>
+                <th>État</th>
+                <th>Inscrit</th>
+                <th>Organisateur</th>
+                <th>Actions</th>
+            </tr>
+            {% for trip in trips %}
+                <tr>
+                    <td>{{ trip.name }}</td>
+                    <td>{{ trip.dateTimeStart }}</td>
+                    <td>{{ trip.dateLimitInscription }}</td>
+                    <td>{{ trip.nbInscriptionMax }}</td>
+                    <td>{{ trip.state }}</td>
+                    <td>{{ inscrit }}</td>
+                    <td>{{ trip.organiser }}</td>
+                    <td>actions</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div>
+        <a>Créer une sortie</a>
+    </div>
 {% endblock %}
