@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Participant;
 use App\Repository\CampusRepository;
+use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,7 +15,7 @@ class ParticipantController extends AbstractController
 {
 
     #[Route('/updateProfil', name: 'updateProfil')]
-    public function updateProfile(): Response
+    public function updateProfil(): Response
     {
 
         $participant = new Participant ();
@@ -33,5 +34,16 @@ class ParticipantController extends AbstractController
     }
 
 
+    #[Route('/myProfil/{id}', name: 'myProfil')]
+    public function find($id): Response
+    {
+        return $this->render('updateProfil/myProfil.html.twig/', [
+            'id' => $id
+        ]);
+        {
 
+
+        }
+
+    }
 }
