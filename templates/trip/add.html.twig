@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TripController!{% endblock %}
+
+{% block main %}
+
+    <div>
+        <h2>Créer une sortie</h2>
+
+        {{ form_start(form) }}
+        <div class="divform">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+        </div>
+        <div class="divform">
+            {{ form_label(form.dateTimeStart) }}
+            {{ form_widget(form.dateTimeStart) }}
+        </div>
+        <div class="divform">
+            {{ form_label(form.dateLimitInscription) }}
+            {{ form_widget(form.dateLimitInscription) }}
+        </div>
+        <div class="divform">
+            {{ form_label(form.nbInscriptionsMax) }}
+            {{ form_widget(form.nbInscriptionsMax) }}
+        </div>
+        <div class="divform">
+            {{ form_label(form.duration) }}
+            {{ form_widget(form.duration) }}
+        </div>
+        <div class="divform">
+            {{ form_label(form.place.city.name) }}
+            {{ form_widget(form.place.city.name) }}
+        </div>
+        <div class="divform">
+            {{ form_rest(form) }}
+            <button>Enregistrer</button>
+            <button>Publier la sortie</button>
+            <button>Annuler</button>
+        </div>
+        {{ form_end(form) }}
+
+
+
+    </div>
+
+{% endblock %}
