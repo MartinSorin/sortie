@@ -9,12 +9,12 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
-class ParticpantType extends AbstractType
+class ParticipantType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name',null, ['label' => 'Nom'] )
+            ->add('name',null, ['label' => 'Nom'])
             ->add('firstname',null, ['label' => 'Prénom'])
             ->add('phone',null, ['label' => 'Téléphone'])
             ->add('email',null, ['label' => 'Email'])
