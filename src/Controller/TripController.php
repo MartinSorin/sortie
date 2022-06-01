@@ -6,6 +6,7 @@ use App\Entity\Participant;
 use App\Entity\Trip;
 use App\Form\TripCancelType;
 use App\Form\TripType;
+use App\Repository\ParticipantRepository;
 use App\Repository\StateRepository;
 use App\Repository\TripRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -94,8 +95,9 @@ class TripController extends AbstractController
     {
         $trip = $tripRepository->find($id);
 
+        dump($trip);
         return $this->render('trip/see.html.twig', [
-            'trip' => $trip
+            'trip' => $trip,
         ]);
     }
 
