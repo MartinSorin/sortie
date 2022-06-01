@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Participant;
 use App\Entity\Trip;
+use App\Form\TripCancelType;
 use App\Form\TripType;
 use App\Repository\StateRepository;
 use App\Repository\TripRepository;
@@ -30,12 +32,14 @@ class TripController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()){
             if ($request->get('save')){
-                $trip->setState($stateRepository->find(15));
+                $state=$stateRepository->findOneBySomeField('En creation');
+                $trip->setState($state);
                 $tripRepository->add($trip, true);
             }
 
             if ($request->get('publish')){
-                $trip->setState($stateRepository->find(16));
+                $state=$stateRepository->findOneBySomeField('Ouverte');
+                $trip->setState($state);
                 $tripRepository->add($trip, true);
             }
         }
@@ -45,20 +49,42 @@ class TripController extends AbstractController
         ]);
     }
 
-    #[Route('/remove/{id}', name: 'remove')]
-    public function remove($id,TripRepository $repository): Response
+    #[Route('/cancel/{id}', name: 'cancel')]
+    public function cancel($id,TripRepository $repository, Request $request, StateRepository $stateRepository): Response
     {
 
         $trip =$repository->find($id);
+        /**
+         * @var Participant $user
+         */
+        $user = $this->getUser();
+        $description = $trip->getInfoTrip();
+        $form = $this->createForm(TripCancelType::class, $trip);
 
-        $form = $this->createForm(TripType::class, $trip);
+        $form->handleRequest($request);
 
 
         if ($form->isSubmitted() && $form->isValid()){
+            dump($form);
+            dump($user);
+            if ($trip->getOrganiser()->getId()== $user->getId()){
 
+                dump($form);
+                dump($request);
+                $motif=$request->get();
+                $trip->setInfoTrip($description .' ANNULEE Motif: '.$motif);
+                $state=$stateRepository->findOneBySomeField('Annulee');
+                $trip->setState($state);
+                $repository->add($trip,true);
+
+                $this->addFlash("success", "Sortie annulée avec succès!");
+
+            }
+
+//            return $this->redirectToRoute('home');
         }
 
-        return $this->render('trip/add.html.twig', [
+        return $this->render('trip/canceltrip.html.twig', [
             'form' => $form->createView(),
         ]);
     }

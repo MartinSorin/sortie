@@ -1,20 +1,39 @@
-{% extends '../base.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}Hello CancelTripController!{% endblock %}
+{% block title %}{{ parent() }} - Annulation de la sortie{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block main %}
+    <h2>Annuler une sortie</h2>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/wamp64/www/sortie/src/Controller/CancelTripController.php'|file_link(0) }}">src/Controller/CancelTripController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/wamp64/www/sortie/templates/cancel_trip/canceltrip.html.twig'|file_link(0) }}">templates/cancel_trip/index.html.twig</a></code></li>
-    </ul>
-</div>
+    {{ form_start(form) }}
+        <div class="divform">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+        </div>
+        <div class="divform">
+            {{ form_label(form.dateTimeStart) }}
+            {{ form_widget(form.dateTimeStart) }}
+        </div>
+        <div class="divform">
+            {{ form_label(form.siteOrganiser) }}
+            {{ form_widget(form.siteOrganiser) }}
+        </div>
+        <div class="divform">
+            {{ form_label(form.city) }}
+            {{ form_widget(form.city) }}
+        </div>
+        <div class="divform">
+            {{ form_label(form.place) }}
+            {{ form_widget(form.place) }}
+        </div>
+        <div class="divform">
+            {{ form_label(form.motif) }}
+            {{ form_widget(form.motif) }}
+        </div>
+        <div class="divform">
+            {{ form_rest(form) }}
+            <button type="submit" name="save" value="save">Enregistrer</button>
+            <a href="{{path('home')}}"><button type="reset" name="cancel" value="cancel">Annuler</button></a>
+        </div>
+    {{ form_end(form) }}
 {% endblock %}
