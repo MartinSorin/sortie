@@ -56,6 +56,14 @@ class ParticipantRepository extends ServiceEntityRepository implements PasswordU
         $this->add($user, true);
     }
 
+    public function campus($id){
+        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder->innerJoin('App\Entity\Campus', 'c', 'WITH', 'p.isAffectedTo=c.id');
+        $queryBuilder->where('p.id = $id');
+        $query = $queryBuilder->getQuery();
+        return $query->getResult();
+    }
+
 //    /**
 //     * @return Participant[] Returns an array of Participant objects
 //     */

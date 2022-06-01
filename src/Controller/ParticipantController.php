@@ -3,9 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Participant;
-use App\Repository\CampusRepository;
 use App\Repository\ParticipantRepository;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\TripRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,15 +17,15 @@ class ParticipantController extends AbstractController
 {
 
     #[Route('/updateProfil', name: 'updateProfil')]
-    public function updateProfile(Request $request, UserPasswordHasherInterface $userPasswordHasher, ParticipantRepository $repository): Response
+    public function updateProfil(Request $request, UserPasswordHasherInterface $userPasswordHasher, ParticipantRepository $repository): Response
     {
 
         $participant = new Participant ();
-//        $participant->setName('');
-//        $participant->setFirstname('');
-//        $participant->setPhone('');
-//        $participant->setEmail('');
-//        $participant->setPassword('');
+        $participant->setName('');
+        $participant->setFirstname('');
+        $participant->setPhone('');
+        $participant->setEmail('');
+        $participant->setPassword('');
 
 
         $form = $this->createForm(ParticpantType::class, $participant);
@@ -43,7 +42,7 @@ class ParticipantController extends AbstractController
                 )
             );
 
-            $repository->add($participant,true);
+            $repository->add($participant, true);
             // do anything else you need here, like send an email
 
             return $this->redirectToRoute('home');
@@ -53,6 +52,19 @@ class ParticipantController extends AbstractController
             'form' => $form->createView(),
         ));
     }
+
+
+    #[Route('/myProfil/{id}', name: 'myProfil')]
+    public function myProfil($id, ParticipantRepository $repo): Response
+    {
+        $participant = $repo->find($id);
+        return $this->render('participant/myProfil.html.twig', [
+            'participant' => $participant,
+
+        ]);
+    }
+
+
 
 
 

@@ -73,7 +73,7 @@
                     <td>{{ trip.nbInscriptionsMax }}</td>
                     <td>{{ trip.state.wording }}</td>
                     <td>Inscrit</td>
-                    <td>{{ trip.organiser.firstname }}</td>
+                    <td><a href={{path('myProfil', {'id':trip.organiser.id})}}>{{ trip.organiser.firstname }}</a></td>
                     <td>actions</td>
                 </tr>
             {% endfor %}

@@ -4,10 +4,20 @@
 
 {% block main %}
 
-    <div>Prénom :</div>
-    <div>Nom :</div>
-    <div>Téléphone :</div>
-    <div>Email :</div>
+    <div>Prénom : {{ participant.firstname }}</div>
+
+    <div>Nom : {{ participant.name }}</div>
+
+    <div>Téléphone : {{ participant.phone }}</div>
+
+    <div>Email : {{ participant.email }}</div>
+
+    <div>Campus : {{ participant.isAffectedTo.name }}</div>
+
+
+<div>
+    <button>Retour</button>
+</div>
 
 
 
