@@ -22,7 +22,8 @@ class TripType extends AbstractType
             ->add('campus', EntityType::class, ['label' => 'Campus', 'choice_label' => 'name', 'class' => 'App\Entity\Campus', 'mapped' => false])
             ->add('city', EntityType::class, ['label' => 'Ville', 'choice_label' => 'name', 'class' => 'App\Entity\City', 'mapped' => false])
             ->add('place', EntityType::class, ['label' => 'Lieu', 'choice_label' => 'name', 'class' => 'App\Entity\Place'])
-            ;
+
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
