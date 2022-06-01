@@ -20,26 +20,13 @@ class ParticipantController extends AbstractController
     public function updateProfil(Request $request, UserPasswordHasherInterface $userPasswordHasher, ParticipantRepository $repository): Response
     {
 
-        $participant = new Participant();
-        /**
-         * @var Participant $user
-         */
-        $user = $this->getUser();
+        $participant = $this->getUser();
 
-        $participant->setName($user->getName());
-        $participant->setFirstname($user->getFirstname());
-        $participant->setPhone($user->getPhone());
-        $participant->setEmail($user->getEmail());
-        $participant->setIsAffectedTo($user->getIsAffectedTo());
+        $participant->setPassword('');
+
 
 
         $form = $this->createForm(ParticipantType::class, $participant);
-
-        if ($form->isSubmitted() && $form->isValid())
-
-        return $this->render('participant/updateProfil.html.twig', [
-            'form' => $form->createView(),
-        ]);
 
         $form->handleRequest($request);
 
@@ -60,9 +47,9 @@ class ParticipantController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
-        return $this->render('participant/updateProfil.html.twig', array(
+        return $this->render('participant/updateProfil.html.twig', [
             'form' => $form->createView(),
-        ));
+        ]);
 
     }
 
