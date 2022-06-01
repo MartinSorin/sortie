@@ -23,7 +23,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 50)]
     private $firstname;
 
-    #[ORM\Column(type: 'string', length: 10)]
+    #[ORM\Column(type: 'string', length: 20)]
     private $phone;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
@@ -44,6 +44,9 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(targetEntity: Campus::class, inversedBy: 'participants')]
     #[ORM\JoinColumn(nullable: false)]
     private $isAffectedTo;
+
+    #[ORM\Column(type: 'string', length: 50, nullable: true, unique: true)]
+    private $username;
 
     public function __construct()
     {
@@ -160,7 +163,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        return (string) $this->email or $this->username;
     }
 
     /**
@@ -168,8 +171,9 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string) $this->username;
     }
+
 
     /**
      * @see UserInterface
@@ -223,5 +227,12 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function setUsername(?string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
     }
 }
