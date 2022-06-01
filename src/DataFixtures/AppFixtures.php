@@ -171,17 +171,17 @@ class AppFixtures extends Fixture
         $this->addParticipant();
         $this->addTrip();
 
-        $participant= new Participant();
-        $participant->setName('Chevrier');
-        $participant->setFirstname('Caly');
-        $participant->setPhone('0269853014');
-        $participant->setEmail('caroline.chevrier@campus.fr');
-        $participant->setPassword($this->encoder->hashPassword($participant,'123456'));
-        $participant->setIsAffectedTo($this->manager->getRepository(Campus::class)->find(2));
-        $participant->setActive(1);
-        $participant->setRoles(['ROLE_ADMIN']);
-        $this->manager->persist($participant);
-        $this->manager->flush();
+//        $participant= new Participant();
+//        $participant->setName('Chevrier');
+//        $participant->setFirstname('Caly');
+//        $participant->setPhone('0269853014');
+//        $participant->setEmail('caroline.chevrier@campus.fr');
+//        $participant->setPassword($this->encoder->hashPassword($participant,'123456'));
+//        $participant->setIsAffectedTo($this->manager->getRepository(Campus::class)->find(2));
+//        $participant->setActive(1);
+//        $participant->setRoles(['ROLE_ADMIN']);
+//        $this->manager->persist($participant);
+//        $this->manager->flush();
 
     }
 }
