@@ -1,3 +1,42 @@
 img{
     max-width: 150px;
 }
+
+body{
+    background-color: #2f323a;
+    color: #c2b8b2;
+    margin-right: 20px;
+    margin-left: 30px;
+}
+
+header{
+    background-color: #c2b8b2;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav{
+    min-width: 400px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: black solid 1px;
+    border-radius: 10px;
+    background-color: #b80c09;
+    height: 40px;
+    width: 120px;
+    text-decoration: none;
+    color: #c2b8b2;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+}
