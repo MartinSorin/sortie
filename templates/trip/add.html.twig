@@ -29,14 +29,26 @@
             {{ form_widget(form.duration) }}
         </div>
         <div class="divform">
-            {{ form_label(form.place.city.name) }}
-            {{ form_widget(form.place.city.name) }}
+            {{ form_label(form.infoTrip) }}
+            {{ form_widget(form.infoTrip) }}
+        </div>.
+        <div class="divform">
+            {{ form_label(form.campus) }}
+            {{ form_widget(form.campus) }}
+        </div>
+        <div class="divform">
+            {{ form_label(form.city) }}
+            {{ form_widget(form.city) }}
+        </div>
+        <div class="divform">
+            {{ form_label(form.place) }}
+            {{ form_widget(form.place) }}
         </div>
         <div class="divform">
             {{ form_rest(form) }}
-            <button>Enregistrer</button>
-            <button>Publier la sortie</button>
-            <button>Annuler</button>
+            <button type="submit" name="save">Enregistrer</button>
+            <button type="submit" name="publish">Publier la sortie</button>
+            <button type="reset" name="cancel">Annuler</button>
         </div>
         {{ form_end(form) }}
 
