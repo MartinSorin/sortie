@@ -74,7 +74,7 @@ class TripController extends AbstractController
     }
 
 
-    
+
     #[Route('/modify/{id}', name: 'modify')]
     public function modify($id,TripRepository $tripRepository): Response
     {
