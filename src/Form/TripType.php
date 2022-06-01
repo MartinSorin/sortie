@@ -20,12 +20,12 @@ class TripType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', null, ['label' => 'Nom de la sortie'])
+            ->add('name', null, ['label' => 'Nom de la sortie', 'required' => false])
             ->add('dateTimeStart', null, ['label' => 'Date et heure de la sortie'])
-            ->add('duration', null, ['label' => 'Durée', 'attr' => ['value' => '90']])
+            ->add('duration', null, ['label' => 'Durée', 'required' => false])
             ->add('dateLimitInscription', null, ['label' => 'Date limite de l\'inscription'])
-            ->add('nbInscriptionsMax', null, ['label' => 'Nombre de places'])
-            ->add('infoTrip', null, ['label' => 'Descriptions et infos'])
+            ->add('nbInscriptionsMax', null, ['label' => 'Nombre de places', 'required' => false])
+            ->add('infoTrip', null, ['label' => 'Descriptions et infos', 'required' => false])
             ->add('siteOrganiser', EntityType::class, ['label' => 'Campus', 'choice_label' => 'name', 'class' => 'App\Entity\Campus', 'data' => $this->security->getUser()->getIsAffectedTo()])
             ->add('city', EntityType::class, ['label' => 'Ville', 'choice_label' => 'name', 'class' => 'App\Entity\City', 'mapped' => false])
             ->add('place', EntityType::class, ['label' => 'Lieu', 'choice_label' => 'name', 'class' => 'App\Entity\Place'])

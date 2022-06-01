@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TripController!{% endblock %}
+
+{% block main %}
+
+
+    <h2>Afficher une sortie</h2>
+    <div>
+
+        <div><p>{{trip.name}}</p></div>
+        <div><p>{{trip.dateTimeStart|date('d M Y  H:i')}}</p></div>
+        <div><p>{{trip.dateLimitInscription|date('d M Y')}}</p></div>
+        <div><p>{{trip.nbInscriptionsMax}}</p></div>
+        <div><p>{{trip.duration}}</p></div>
+        <div><p>{{trip.infoTrip}}</p></div>
+        <div><p>{{trip.siteOrganiser.name}}</p></div>
+        <div><p>{{trip.place.name}}</p></div>
+        <div><p>{{trip.place.street}}</p></div>
+        <div><p>{{trip.place.city.postalCode}}</p></div>
+        <div><p>{{trip.place.latitude}}</p></div>
+        <div><p>{{trip.place.longitude}}</p></div>
+
+    </div>
+
+    <div>
+        <h4>Liste des participants inscrits</h4>
+
+        <table>
+            <tr>
+                <th>Pseudo</th>
+                <th>Nom</th>
+            </tr>
+            <tr>
+                {#for participant in participants#}
+                <td></td>
+                <td></td>
+                {#endfor#}
+            </tr>
+
+        </table>
+
+    </div>
+{% endblock %}
