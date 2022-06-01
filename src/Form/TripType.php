@@ -7,9 +7,16 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Core\Security;
 
 class TripType extends AbstractType
 {
+    private Security $security;
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -19,7 +26,7 @@ class TripType extends AbstractType
             ->add('dateLimitInscription', null, ['label' => 'Date limite de l\'inscription'])
             ->add('nbInscriptionsMax', null, ['label' => 'Nombre de places'])
             ->add('infoTrip', null, ['label' => 'Descriptions et infos'])
-            ->add('campus', EntityType::class, ['label' => 'Campus', 'choice_label' => 'name', 'class' => 'App\Entity\Campus', 'mapped' => false])
+            ->add('siteOrganiser', EntityType::class, ['label' => 'Campus', 'choice_label' => 'name', 'class' => 'App\Entity\Campus', 'data' => $this->security->getUser()->getIsAffectedTo()])
             ->add('city', EntityType::class, ['label' => 'Ville', 'choice_label' => 'name', 'class' => 'App\Entity\City', 'mapped' => false])
             ->add('place', EntityType::class, ['label' => 'Lieu', 'choice_label' => 'name', 'class' => 'App\Entity\Place'])
 

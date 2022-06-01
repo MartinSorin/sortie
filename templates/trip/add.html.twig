@@ -33,8 +33,8 @@
             {{ form_widget(form.infoTrip) }}
         </div>.
         <div class="divform">
-            {{ form_label(form.campus) }}
-            {{ form_widget(form.campus) }}
+            {{ form_label(form.siteOrganiser) }}
+            {{ form_widget(form.siteOrganiser) }}
         </div>
         <div class="divform">
             {{ form_label(form.city) }}
@@ -46,9 +46,9 @@
         </div>
         <div class="divform">
             {{ form_rest(form) }}
-            <button type="submit" name="save">Enregistrer</button>
-            <button type="submit" name="publish">Publier la sortie</button>
-            <button type="reset" name="cancel">Annuler</button>
+            <button type="submit" name="save" value="save">Enregistrer</button>
+            <button type="submit" name="publish" value="publish">Publier la sortie</button>
+            <button type="reset" name="cancel" value="cancel">Annuler</button>
         </div>
         {{ form_end(form) }}
 
