@@ -75,7 +75,7 @@
                     <td>Inscrit</td>
                     <td><a href={{path('myProfil', {'id':trip.organiser.id})}}>{{ trip.organiser.firstname }}</a></td>
                     <td><a href={{path('display', {'id':trip.id})}}>Afficher</a></td>
-                    <td><a {{lien}}>{{ message }}</a></td>
+
                 </tr>
             {% endfor %}
         </table>

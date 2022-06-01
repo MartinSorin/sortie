@@ -8,18 +8,18 @@
     <h2>Afficher une sortie</h2>
     <div>
 
-        <div><p>{{trip.name}}</p></div>
-        <div><p>{{trip.dateTimeStart|date('d M Y  H:i')}}</p></div>
-        <div><p>{{trip.dateLimitInscription|date('d M Y')}}</p></div>
-        <div><p>{{trip.nbInscriptionsMax}}</p></div>
-        <div><p>{{trip.duration}}</p></div>
-        <div><p>{{trip.infoTrip}}</p></div>
-        <div><p>{{trip.siteOrganiser.name}}</p></div>
-        <div><p>{{trip.place.name}}</p></div>
-        <div><p>{{trip.place.street}}</p></div>
-        <div><p>{{trip.place.city.postalCode}}</p></div>
-        <div><p>{{trip.place.latitude}}</p></div>
-        <div><p>{{trip.place.longitude}}</p></div>
+        <div><p>Nom de la sortie : {{trip.name}}</p></div>
+        <div><p>Date et heure de la sortie : {{trip.dateTimeStart|date('d M Y  H:i')}}</p></div>
+        <div><p>Date limite d'inscription : {{trip.dateLimitInscription|date('d M Y')}}</p></div>
+        <div><p>Nombre de place : {{trip.nbInscriptionsMax}}</p></div>
+        <div><p>Durée : {{trip.duration}} minutes</p></div>
+        <div><p>Description et infos : {{trip.infoTrip}}</p></div>
+        <div><p>Campus : {{trip.siteOrganiser.name}}</p></div>
+        <div><p>Lieu : {{trip.place.name}}</p></div>
+        <div><p>Rue : {{trip.place.street}}</p></div>
+        <div><p>Code Postal : {{trip.place.city.postalCode}}</p></div>
+        <div><p>Latitude : {{trip.place.latitude}}</p></div>
+        <div><p>Longitude : {{trip.place.longitude}}</p></div>
 
     </div>
 
@@ -32,10 +32,10 @@
                 <th>Nom</th>
             </tr>
             <tr>
-                {#for participant in participants#}
-                <td></td>
-                <td></td>
-                {#endfor#}
+                {%for participant in trip.isRegistered%}
+                    <td>{{participant.username}}</td>
+                    <td>{{participant.name}} {{participant.firstname}}</td>
+                {%endfor%}
             </tr>
 
         </table>
