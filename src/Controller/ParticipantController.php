@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Participant;
 use App\Repository\ParticipantRepository;
-use App\Repository\TripRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,9 +19,7 @@ class ParticipantController extends AbstractController
     {
 
         $participant = $this->getUser();
-
-        $participant->setPassword('');
-
+        //$participant->setPassword('');
 
 
         $form = $this->createForm(ParticipantType::class, $participant);

@@ -8,6 +8,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: ParticipantRepository::class)]
 class Participant implements UserInterface, PasswordAuthenticatedUserInterface
@@ -18,21 +20,31 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     #[ORM\Column(type: 'string', length: 50)]
+    #[Assert\NotBlank(['message'=>'Le nom du participant est obligatoire'])]
+    #[Assert\Length(['min'=>2,'minMessage' => 'Le nom ne peut avoir moins de 2 caractères','max'=>50, 'maxMessage' => 'Le nom ne peut avoir plus de 50 caractères'])]
     private $name;
 
     #[ORM\Column(type: 'string', length: 50)]
+    #[Assert\NotBlank(['message'=>'Le prénom du participant est obligatoire'])]
+    #[Assert\Length(['min'=>2,'minMessage' => 'Le prénom ne peut avoir moins de 2 caractères','max'=>50, 'maxMessage' => 'Le prénom ne peut avoir plus de 50 caractères'])]
     private $firstname;
 
     #[ORM\Column(type: 'string', length: 20)]
+    #[Assert\NotBlank(['message'=>'Le numéro de téléphone du participant est obligatoire'])]
+    #[Assert\Length(['min'=>10,'minMessage' => 'Le numéro de téléphone ne peut avoir moins de 10 caractères'])]
     private $phone;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
+    #[Assert\NotBlank(['message'=>'L\'adresse email du participant est obligatoire'])]
+    #[Assert\Length(['max'=>180, 'maxMessage' => 'L\'adresse email ne peut avoir plus de 180 caractères'])]
     private $email;
 
     #[ORM\Column(type: 'json')]
     private $roles = [];
 
     #[ORM\Column(type: 'string')]
+    #[Assert\NotBlank(['message'=>'Le mot de passe du participant est obligatoire'])]
+    #[Assert\Length(['min'=>5,'minMessage' => 'Le mot de passe ne peut avoir moins de 5 caractères'])]
     private $password;
 
     #[ORM\Column(type: 'boolean')]
@@ -42,10 +54,13 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     private $trips;
 
     #[ORM\ManyToOne(targetEntity: Campus::class, inversedBy: 'participants')]
+    #[Assert\NotBlank(['message'=>'Le campus est obligatoire'])]
     #[ORM\JoinColumn(nullable: false)]
     private $isAffectedTo;
 
     #[ORM\Column(type: 'string', length: 50, nullable: true, unique: true)]
+    #[Assert\NotBlank(['message'=>'Le pseudo du participant est obligatoire'])]
+    #[Assert\Length(['max'=>50, 'maxMessage' => 'Le pseudo ne peut avoir plus de 50 caractères'])]
     private $username;
 
     public function __construct()
@@ -63,7 +78,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
