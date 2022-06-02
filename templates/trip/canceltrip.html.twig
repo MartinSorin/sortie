@@ -4,28 +4,14 @@
 
 {% block main %}
     <h2>Annuler une sortie</h2>
+    <br>
 
+    <h5>Nom de la sortie: {{trip.name}}</h5>
+    <h5>Date de la sortie: {{trip.dateTimeStart|date("d/m/Y")}}</h5>
+    <h5>Campus: {{trip.siteOrganiser.name}}</h5>
+    <h5>Lieu: {{trip.place.name}} {{trip.place.street}} {{trip.place.city.postalCode}} {{trip.place.city.name}}</h5>
     {{ form_start(form) }}
-        <div class="divform">
-            {{ form_label(form.name) }}
-            {{ form_widget(form.name) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.dateTimeStart) }}
-            {{ form_widget(form.dateTimeStart) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.siteOrganiser) }}
-            {{ form_widget(form.siteOrganiser) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.city) }}
-            {{ form_widget(form.city) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.place) }}
-            {{ form_widget(form.place) }}
-        </div>
+
         <div class="divform">
             {{ form_label(form.motif) }}
             {{ form_widget(form.motif) }}
@@ -33,7 +19,7 @@
         <div class="divform">
             {{ form_rest(form) }}
             <button type="submit" name="save" value="save">Enregistrer</button>
-            <a href="{{path('home')}}"><button type="reset" name="cancel" value="cancel">Annuler</button></a>
+            <a href="{{path('home')}}"><button  name="cancel" value="cancel">Annuler</button></a>
         </div>
     {{ form_end(form) }}
 {% endblock %}

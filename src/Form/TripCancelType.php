@@ -22,11 +22,6 @@ class TripCancelType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', null, ['label' => 'Nom de la sortie'])
-            ->add('dateTimeStart', null, ['label' => 'Date de la sortie'])
-            ->add('siteOrganiser', EntityType::class, ['label' => 'Campus', 'choice_label' => 'name', 'class' => 'App\Entity\Campus', 'data' => $this->security->getUser()->getIsAffectedTo()])
-            ->add('city', EntityType::class, ['label' => 'Ville', 'choice_label' => 'name', 'class' => 'App\Entity\City', 'mapped' => false])
-            ->add('place', EntityType::class, ['label' => 'Lieu', 'choice_label' => 'name', 'class' => 'App\Entity\Place'])
             ->add('motif', TextareaType::class, ['label' => 'Motif annulation', 'required' => false,'mapped' => false])
         ;
     }

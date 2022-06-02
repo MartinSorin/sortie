@@ -54,7 +54,6 @@ class TripController extends AbstractController
     #[Route('/cancel/{id}', name: 'cancel')]
     public function cancel($id,TripRepository $repository, Request $request, StateRepository $stateRepository): Response
     {
-
         $trip =$repository->find($id);
         /**
          * @var Participant $user
@@ -86,6 +85,8 @@ class TripController extends AbstractController
 
         return $this->render('trip/canceltrip.html.twig', [
             'form' => $form->createView(),
+            'id'=>$id,
+            'trip'=>$trip
         ]);
     }
 
