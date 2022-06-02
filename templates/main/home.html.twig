@@ -32,8 +32,8 @@
         </div>
         <div class="block">
             <div class="divform">
-                {{ form_widget(form.organizer) }}
-                {{ form_label(form.organizer) }}
+                {{ form_widget(form.organiser) }}
+                {{ form_label(form.organiser) }}
             </div>
             <div class="divform">
                 {{ form_widget(form.registered) }}
@@ -78,8 +78,8 @@
                     <td>{{ trip.state.wording }}</td>
                     <td>Inscrit</td>
                     <td><a href={{path('myProfil', {'id':trip.organiser.id})}}>{{ trip.organiser.firstname }}</a></td>
-                    <td><a href={{path('display', {'id':trip.id})}}>Afficher</a></td>
-                    <td><a href={{ path('modify', {'id':trip.id})}}>Modifier</a></td>
+                    <td><a href={{path('display', {'id':trip.id})}}>Afficher</a> - <a href={{ path('modify', {'id':trip.id})}}>Modifier</a></td>
+
                 </tr>
             {% endfor %}
         </table>

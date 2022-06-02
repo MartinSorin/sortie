@@ -2,7 +2,9 @@
 
 namespace App\Repository;
 
+use App\Entity\Participant;
 use App\Entity\Trip;
+use App\Form\Model\Filter;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -37,6 +39,57 @@ class TripRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function filter(Filter $filter, $participant, $stateRepository){
+
+        $queryBuilder = $this->createQueryBuilder('t');
+
+        if ($filter->getCampus()){
+            $queryBuilder->andWhere('t.siteOrganiser = :campus');
+            $queryBuilder->setParameter('campus', $filter->getCampus()->getId());
+        }
+
+        if ($filter->getSearch()){
+            $queryBuilder->andWhere('t.name LIKE :search');
+            $queryBuilder->setParameter('search', '%'.$filter->getSearch().'%');
+
+        }
+
+        if ($filter->getStart()){
+            $queryBuilder->andWhere('t.dateTimeStart > :start');
+            $queryBuilder->setParameter('start', $filter->getStart());
+        }
+
+        if ($filter->getEnd()){
+            $queryBuilder->andWhere('t.dateTimeStart < :end');
+            $queryBuilder->setParameter('end', $filter->getEnd());
+        }
+
+        if ($filter->getOrganiser()){
+            dump($participant);
+            $queryBuilder->andWhere('t.organiser = :organiser');
+            $queryBuilder->setParameter('organiser', $participant);
+        }
+
+        if ($filter->getRegistered()){
+            $queryBuilder->andWhere(':registered MEMBER OF t.isRegistered');
+            $queryBuilder->setParameter('registered', $participant);
+        }
+
+        if ($filter->getNotRegistered()){
+            $queryBuilder->andWhere(':notRegistered NOT MEMBER OF t.isRegistered');
+            $queryBuilder->setParameter('notRegistered', $participant);
+        }
+
+        if ($filter->getPassed()){
+            $state = $stateRepository->findOneBySomeField('Terminee');
+            $queryBuilder->andWhere('t.state = :passed');
+            $queryBuilder->setParameter('passed', $state->getId());
+        }
+
+        $query = $queryBuilder->getQuery();
+        return $query->getResult();
     }
 
 //    /**

@@ -31,7 +31,6 @@ class TripController extends AbstractController
 
         $form->handleRequest($request);
 
-
         if ($form->isSubmitted() && $form->isValid()){
 
             if ($request->get('save')){
