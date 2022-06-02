@@ -82,12 +82,35 @@
                         {%endfor%}
                     </td>
                     <td><a href={{path('myProfil', {'id':trip.organiser.id})}}>{{ trip.organiser.firstname }}</a></td>
-                    <td><a href={{path('display', {'id':trip.id})}}>Afficher</a> - <a href={{path('cancel', {'id':trip.id})}}>Annuler</a> -
-                        <a href={{ path('modify', {'id':trip.id})}}>Modifier</a> - <a href={{path('register', {'id':trip.id})}}>S'inscrire</a> -
-                        <a href={{ path('unsubscribe', {'id':trip.id})}}>Se désinscrire</a> - <a href={{ path('publish', {'id':trip.id})}}>Publier</a>
 
+                    <td>{%if trip.state.wording == 'Ouverte' %}
+                        <a href={{path('display', {'id':trip.id})}}>Afficher</a>
+                            {%if trip.organiser == user%}
+                        - <a href={{path('cancel', {'id':trip.id})}}>Annuler</a>
+                            {%endif%}
+                            {%if trip.organiser != user%}
+                                {%for registred in trip.isRegistered%}
+                                    {%if registred == user%}
+                                        - <a href={{ path('unsubscribe', {'id':trip.id})}}>Se désinscrire</a>
+                                        {% set break = true %}
+                                    {%endif%}
+                                    {%if trip.isRegistered.count < trip.nbInscriptionsMax %}
+                                    - <a href={{path('register', {'id':trip.id})}}>S'inscrire</a>
+                                    {%endif%}
+                                {%endfor%}
+                            {%endif%}
+                        {%endif%}
 
-
+                        {%if trip.state.wording != 'Ouverte' %}
+                            <a href={{path('display', {'id':trip.id})}}>Afficher</a>
+                            {%if trip.organiser == user%}
+                                {%if trip.state.wording != 'En création'%}
+                                    - <a href={{ path('modify', {'id':trip.id})}}>Modifier</a>  -
+                                    <a href={{ path('publish', {'id':trip.id})}}>Publier</a>
+                                {%endif%}
+                            {%endif%}
+                        {%endif%}
+                    </td>
                 </tr>
             {% endfor %}
         </table>
