@@ -25,9 +25,10 @@ class MainController extends AbstractController
             'form' => $form->createView()
             ]);
     }
-
-
-
-
+    #[Route('/legal-stuff', name: 'legal_stuff')]
+    public function legalStuff(): Response
+    {
+        return $this->render('main/legal-stuff.html.twig');
+    }
 
 }

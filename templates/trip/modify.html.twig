@@ -36,18 +36,20 @@
             {{ form_label(form.siteOrganiser) }}
             {{ form_widget(form.siteOrganiser) }}
         </div>
-        <div class="divform">
-            {{ form_label(form.city) }}
-            {{ form_widget(form.city) }}
-        </div>
+
         <div class="divform">
             {{ form_label(form.place) }}
             {{ form_widget(form.place) }}
         </div>
+
+        <h5>Rue: {{trip.place.street}}</h5>
+        <h5>Code Postal: {{trip.place.city.postalCode}} {{trip.place.city.name}}</h5>
+
         <div class="divform">
             {{ form_rest(form) }}
             <button type="submit" name="save" value="save">Enregistrer</button>
             <button type="submit" name="publish" value="publish">Publier la sortie</button>
+            <button type="submit" name="remove" value="remove">Supprimer la sortie</button>
             <a href={{path('home')}}>Annuler</a>
         </div>
         {{ form_end(form) }}

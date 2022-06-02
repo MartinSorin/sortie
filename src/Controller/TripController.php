@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Participant;
 use App\Entity\Trip;
 use App\Form\TripCancelType;
+use App\Form\TripModifyType;
 use App\Form\TripType;
 use App\Repository\ParticipantRepository;
 use App\Repository\StateRepository;
@@ -37,12 +38,14 @@ class TripController extends AbstractController
                 $state=$stateRepository->findOneBySomeField('En creation');
                 $trip->setState($stateRepository->find($state));
                 $tripRepository->add($trip, true);
+                $this->addFlash("success", "Sortie Enregistrée avec succès!");
             }
 
             if ($request->get('publish')){
                 $state=$stateRepository->findOneBySomeField('Ouverte');
                 $trip->setState($stateRepository->find($state));
                 $tripRepository->add($trip, true);
+                $this->addFlash("success", "Sortie Publiée avec succès!");
             }
         }
 
@@ -54,7 +57,6 @@ class TripController extends AbstractController
     #[Route('/cancel/{id}', name: 'cancel')]
     public function cancel($id,TripRepository $repository, Request $request, StateRepository $stateRepository): Response
     {
-
         $trip =$repository->find($id);
         /**
          * @var Participant $user
@@ -81,11 +83,13 @@ class TripController extends AbstractController
 
             }
 
-//            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('trip/canceltrip.html.twig', [
             'form' => $form->createView(),
+            'id'=>$id,
+            'trip'=>$trip
         ]);
     }
 
@@ -103,12 +107,59 @@ class TripController extends AbstractController
 
 
     #[Route('/modify/{id}', name: 'modify')]
-    public function modify($id,TripRepository $tripRepository): Response
+    public function modify($id,TripRepository $repository, Request $request, StateRepository $stateRepository): Response
     {
-        $trip = $tripRepository->find($id);
 
-        return $this->render('trip/modify.html.twig', [
-            'trip' => $trip
-        ]);
+        $trip = $repository->find($id);
+        $user = $this->getUser();
+        $state = $stateRepository->findOneBySomeField('En creation');
+        dump($trip);
+        dump($state);
+        dump($user);
+        if ($trip->getState()->getId() == $state->getId() && $trip->getOrganiser() == $user)
+        {
+            $form = $this->createForm(TripModifyType::class, $trip);
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid())
+            {
+
+                if ($request->get('save'))
+                {
+                    $state = $stateRepository->findOneBySomeField('En creation');
+                    $trip->setState($stateRepository->find($state));
+                    $repository->add($trip, true);
+                    $this->addFlash("success", "Sortie Enregistée avec succès!");
+                }
+
+                if ($request->get('publish'))
+                {
+                    $state = $stateRepository->findOneBySomeField('Ouverte');
+                    $trip->setState($stateRepository->find($state));
+                    $repository->add($trip, true);
+                    $this->addFlash("success", "Sortie publiée avec succès!");
+                }
+
+                if ($request->get('remove'))
+                {
+                    $repository->remove($trip, true);
+                    $this->addFlash("success", "Sortie Supprimée avec succès!");
+                }
+
+                return $this->redirectToRoute('home');
+            }
+
+            return $this->render('trip/modify.html.twig', [
+                'form' => $form->createView(),
+                'id' => $id,
+                'trip' => $trip
+            ]);
+
+
+        }
+        $this->addFlash("warning", "La suppression de sortie ne peut se faire que par l'organisateur avant la publication de celle-ci");
+        return $this->redirectToRoute('home');
+
     }
+
 }
