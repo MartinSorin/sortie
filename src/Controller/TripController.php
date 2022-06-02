@@ -191,5 +191,18 @@ class TripController extends AbstractController
         return $this->redirectToRoute('home');
 
     }
+    #[Route('/publish/{id}', name: 'publish')]
+    public function publish($id,TripRepository $tripRepository,StateRepository $stateRepository): Response
+    {
+        $trip = $tripRepository->find($id);
+        $state = $stateRepository->findOneBySomeField('Ouverte');
+        $trip->setState($state);
+        $tripRepository->add($trip, true);
+        $this->addFlash("success", "Sortie Publiée avec succès!");
+        return $this->redirectToRoute('home');
+
+
+    }
+
 
 }
