@@ -32,15 +32,16 @@ class TripController extends AbstractController
 
 
         if ($form->isSubmitted() && $form->isValid()){
+
             if ($request->get('save')){
                 $state=$stateRepository->findOneBySomeField('En creation');
-                $trip->setState($state);
+                $trip->setState($stateRepository->find($state));
                 $tripRepository->add($trip, true);
             }
 
             if ($request->get('publish')){
                 $state=$stateRepository->findOneBySomeField('Ouverte');
-                $trip->setState($state);
+                $trip->setState($stateRepository->find($state));
                 $tripRepository->add($trip, true);
             }
         }

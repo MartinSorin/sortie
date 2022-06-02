@@ -229,6 +229,11 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
+    public function getPseudo(): ?string
+    {
+        return $this->username;
+    }
+
     public function setUsername(?string $username): self
     {
         $this->username = $username;

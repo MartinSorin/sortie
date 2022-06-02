@@ -1,0 +1,14 @@
+.divform a,.divform button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: black solid 1px;
+    border-radius: 10px;
+    background-color: #b80c09;
+    height: 40px;
+    width: 120px;
+    text-decoration: none;
+    color: #c2b8b2;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}

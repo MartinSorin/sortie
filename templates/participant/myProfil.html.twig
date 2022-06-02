@@ -4,6 +4,8 @@
 
 {% block main %}
 
+    <div>Pseudo : {{ participant.pseudo }}</div>
+
     <div>Prénom : {{ participant.firstname }}</div>
 
     <div>Nom : {{ participant.name }}</div>
@@ -16,7 +18,7 @@
 
 
 <div>
-    <button>Retour</button>
+    <a href={{path('home')}}> Retour </a>
 </div>
 
 

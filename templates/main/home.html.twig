@@ -2,56 +2,60 @@
 
 {% block title %}{{ parent() }} - Accueil{% endblock %}
 
+{% block head %}<link rel="stylesheet" href={{ asset('css/home.css') }}>{% endblock %}
+
 {% block main %}
 
     <h1>Acceuil</h1>
 
-    <div>
-        <h2>Filtrer les sorties</h2>
-
-        {{ form_start(form) }}
-        <div class="divform">
-            {{ form_label(form.campus) }}
-            {{ form_widget(form.campus) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.search) }}
-            {{ form_widget(form.search) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.start) }}
-            {{ form_widget(form.start) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.end) }}
-            {{ form_widget(form.end) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.organizer) }}
-            {{ form_widget(form.organizer) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.registered) }}
-            {{ form_widget(form.registered) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.notRegistered) }}
-            {{ form_widget(form.notRegistered) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.passed) }}
-            {{ form_widget(form.passed) }}
-        </div>
-
-        <div class="divform">
-            {{ form_rest(form) }}
-            <button>Rechercher</button>
-        </div>
-        {{ form_end(form) }}
+    <h2>Filtrer les sorties</h2>
 
 
+    {{ form_start(form) }}
+    <div class="form">
+        <div class="block">
+            <div class="divform">
+                {{ form_label(form.campus) }}
+                {{ form_widget(form.campus) }}
+            </div>
+            <div class="divform">
+                {{ form_label(form.search) }}
+                {{ form_widget(form.search) }}
+            </div>
+            <div class="divform" id="date">
+                {{ form_label(form.start) }}
+                {{ form_widget(form.start) }}
 
+                {{ form_label(form.end) }}
+                {{ form_widget(form.end) }}
+            </div>
+        </div>
+        <div class="block">
+            <div class="divform">
+                {{ form_widget(form.organizer) }}
+                {{ form_label(form.organizer) }}
+            </div>
+            <div class="divform">
+                {{ form_widget(form.registered) }}
+                {{ form_label(form.registered) }}
+            </div>
+            <div class="divform">
+                {{ form_widget(form.notRegistered) }}
+                {{ form_label(form.notRegistered) }}
+            </div>
+            <div class="divform">
+                {{ form_widget(form.passed) }}
+                {{ form_label(form.passed) }}
+            </div>
+        </div>
+        <div class="block" id="blockSearch">
+            <div class="divform" id="search">
+                {{ form_rest(form) }}
+                <button>Rechercher</button>
+            </div>
+        </div>
     </div>
+    {{ form_end(form) }}
 
     <div>
         <table>
@@ -75,13 +79,13 @@
                     <td>Inscrit</td>
                     <td><a href={{path('myProfil', {'id':trip.organiser.id})}}>{{ trip.organiser.firstname }}</a></td>
                     <td><a href={{path('display', {'id':trip.id})}}>Afficher</a></td>
-{#                    <td><a {{lien}}>{{ message }}</a></td>#}
+                    <td><a href={{ path('modify', {'id':trip.id})}}>Modifier</a></td>
                 </tr>
             {% endfor %}
         </table>
     </div>
 
-    <div>
-        <a href={{path('add')}}>Créer une sortie</a>
+    <div class="button">
+        <a href={{ path('add') }}>Créer une sortie</a>
     </div>
 {% endblock %}
