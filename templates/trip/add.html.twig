@@ -2,7 +2,8 @@
 
 {% block title %}Hello TripController!{% endblock %}
 
-{% block head %}<link rel="stylesheet" href={{ asset('css/add.css') }}>{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href={{ asset('css/add.css') }}>{% endblock %}
 
 {% block main %}
 
@@ -33,7 +34,8 @@
         <div class="divform">
             {{ form_label(form.infoTrip) }}
             {{ form_widget(form.infoTrip) }}
-        </div>.
+        </div>
+        .
         <div class="divform">
             {{ form_label(form.siteOrganiser) }}
             {{ form_widget(form.siteOrganiser) }}
@@ -45,15 +47,19 @@
         <div class="divform">
             {{ form_label(form.place) }}
             {{ form_widget(form.place) }}
+            <a href={{ path('addPlace') }}>Add lieu</a>
         </div>
         <div class="divform">
             {{ form_rest(form) }}
+            {%for place in places%}
+                {{ place.name }}
+            {%endfor%}
+
             <button type="submit" name="save" value="save">Enregistrer</button>
             <button type="submit" name="publish" value="publish">Publier la sortie</button>
-            <a href={{path('home')}}>Annuler</a>
+            <a href={{ path('home') }}>Annuler</a>
         </div>
         {{ form_end(form) }}
-
 
 
     </div>

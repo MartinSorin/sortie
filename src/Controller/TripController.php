@@ -3,11 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Participant;
+use App\Entity\Place;
 use App\Entity\Trip;
+use App\Form\PlaceType;
 use App\Form\TripCancelType;
 use App\Form\TripModifyType;
 use App\Form\TripType;
 use App\Repository\ParticipantRepository;
+use App\Repository\PlaceRepository;
 use App\Repository\StateRepository;
 use App\Repository\TripRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,10 +21,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class TripController extends AbstractController
 {
     #[Route('/add', name: 'add')]
-    public function add(Request $request, TripRepository $tripRepository, StateRepository $stateRepository): Response
+    public function add(Request $request, TripRepository $tripRepository, StateRepository $stateRepository, PlaceRepository $placeRepository): Response
     {
 
         $user = $this->getUser();
+
+        $places = $placeRepository->findAll();
 
         $trip =new Trip();
         $trip->setOrganiser($user);
@@ -52,6 +57,30 @@ class TripController extends AbstractController
         }
 
         return $this->render('trip/add.html.twig', [
+            'form' => $form->createView(),
+            'places' => $places
+        ]);
+    }
+
+    #[Route('/addPlace', name: 'addPlace')]
+    public function addPlace(Request $request, PlaceRepository $placeRepository): Response
+    {
+
+        $place = new Place();
+
+        $form = $this->createForm(PlaceType::class, $place);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $placeRepository->add($place, true);
+            $this->addFlash("success", "Lieu Enregistrée avec succès!");
+
+            return $this->redirectToRoute('add');
+        }
+
+        return $this->render('trip/addPlace.html.twig', [
             'form' => $form->createView(),
         ]);
     }

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TripController!{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href={{ asset('css/add.css') }}>{% endblock %}
+
+{% block main %}
+
+    {{ form_start(form) }}
+
+
+    <div class="divform">
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name) }}
+    </div>
+    <div class="divform">
+        {{ form_label(form.street) }}
+        {{ form_widget(form.street) }}
+    </div>
+    <div class="divform">
+        {{ form_label(form.latitude) }}
+        {{ form_widget(form.latitude) }}
+    </div>
+    <div class="divform">
+        {{ form_label(form.longitude) }}
+        {{ form_widget(form.longitude) }}
+    </div>
+    {{ form_rest(form) }}
+    <div class="divform">
+        <button type="submit" name="save" value="save">Enregistrer</button>
+    </div>
+
+
+    {{ form_end(form) }}
+
+{% endblock %}

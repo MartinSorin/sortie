@@ -18,13 +18,11 @@ class MainController extends AbstractController
     public function home(Request $request, TripRepository $tripRepository, CampusRepository $campusRepository, StateRepository $stateRepository): Response
     {
         $user = $this->getUser();
-
-        $trips = $tripRepository->findAll();
-        $campus = $campusRepository->findAll();
         $filter = new Filter();
 
-        dump($trips);
-        dump($user);
+        $trips = $tripRepository->filter($filter, $user, $stateRepository);
+        $campus = $campusRepository->findAll();
+
 
         $form = $this->createForm(FilterType::class, $filter);
 
