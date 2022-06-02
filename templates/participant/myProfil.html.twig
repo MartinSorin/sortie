@@ -2,43 +2,33 @@
 
 {% block title %}{{ parent() }} -Profil{% endblock %}
 
+{% block head %}
+    <link rel="stylesheet" href={{ asset('css/myProfil.css') }}>{% endblock %}
+
 {% block main %}
 
-    <div>Pseudo : {{ participant.pseudo }}</div>
-
-    <div>Prénom : {{ participant.firstname }}</div>
-
-    <div>Nom : {{ participant.name }}</div>
-
-    <div>Téléphone : {{ participant.phone }}</div>
-
-    <div>Email : {{ participant.email }}</div>
-
-    <div>Campus : {{ participant.isAffectedTo.name }}</div>
+    <div class="profil">
+        <h1> {{ participant.pseudo }}</h1>
 
 
-<div>
-    <a href={{path('home')}}> Retour </a>
-</div>
+        <div>Prénom : {{ participant.firstname }}</div>
 
 
+        <div>Nom : {{ participant.name }}</div>
 
 
+        <div>Téléphone : {{ participant.phone }}</div>
 
 
+        <div>Email : {{ participant.email }}</div>
 
 
+        <div>Campus : {{ participant.isAffectedTo.name }}</div>
 
 
-
-
-
-
-
-
-
-
-
-
+        <div class="button">
+            <a href={{ path('home') }}> Retour </a>
+        </div>
+    </div>
 
 {% endblock %}

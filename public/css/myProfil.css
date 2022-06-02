@@ -2,12 +2,11 @@ h1{
     text-align: center;
 }
 
-form{
+.profil div{
     text-align: center;
-    padding: 20px ;
-
 }
-.button div,.button button{
+
+.button a{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,4 +19,5 @@ form{
     color: #c2b8b2;
     margin-top: 10px;
     margin-bottom: 20px;
+
 }
