@@ -23,19 +23,22 @@ class MainController extends AbstractController
         $campus = $campusRepository->findAll();
         $filter = new Filter();
 
+        dump($trips);
+        dump($user);
+
         $form = $this->createForm(FilterType::class, $filter);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-            dump($filter);
             $trips = $tripRepository->filter($filter, $user, $stateRepository);
         }
 
         return $this->render('main/home.html.twig', [
             'trips' => $trips,
             'campusList' => $campus,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'user' => $user
             ]);
     }
     #[Route('/legal-stuff', name: 'legal_stuff')]

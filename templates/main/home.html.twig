@@ -76,7 +76,11 @@
                     <td>{{ trip.dateLimitInscription|date("d/m/Y") }}</td>
                     <td>{{ trip.nbInscriptionsMax }}</td>
                     <td>{{ trip.state.wording }}</td>
-                    <td>Inscrit</td>
+                    <td>
+                        {%for participant in trip.isRegistered%}
+                            {%if participant == user%} Inscrit {%endif%}
+                        {%endfor%}
+                    </td>
                     <td><a href={{path('myProfil', {'id':trip.organiser.id})}}>{{ trip.organiser.firstname }}</a></td>
                     <td><a href={{path('display', {'id':trip.id})}}>Afficher</a> - <a href={{path('cancel', {'id':trip.id})}}>Annuler</a> -
                         <a href={{ path('modify', {'id':trip.id})}}>Modifier</a> - <a href={{path('register', {'id':trip.id})}}>S'inscrire</a> -

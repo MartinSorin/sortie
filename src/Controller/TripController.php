@@ -100,7 +100,6 @@ class TripController extends AbstractController
     {
         $trip = $tripRepository->find($id);
 
-        dump($trip);
         return $this->render('trip/see.html.twig', [
             'trip' => $trip,
         ]);
