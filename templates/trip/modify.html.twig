@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello TripController!{% endblock %}
-
+{% block title %}{{parent()}} - Modification de sortie{% endblock %}
+{%block head%} <link rel="stylesheet" href={{asset('css/modify.css')}}>{%endblock%}
 {% block main %}
 
     <div>

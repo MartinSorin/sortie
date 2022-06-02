@@ -19,7 +19,7 @@ class FilterType extends AbstractType
             ->add('search', TextType::class, ['label' => 'Le nom de la sortie contient', 'required' => false, 'attr' => ['placeholder' => 'search']])
             ->add('start', DateTimeType::class, ['label' => 'Entre', 'required' => false])
             ->add('end', DateTimeType::class, ['label' => 'et', 'required' => false])
-            ->add('organizer', CheckboxType::class, ['label' => 'Sorties dont je suis l\'organisateur/trice', 'required' => false])
+            ->add('organiser', CheckboxType::class, ['label' => 'Sorties dont je suis l\'organisateur/trice', 'required' => false])
             ->add('registered', CheckboxType::class, ['label' => 'Sorties auxquelles je suis inscrit/e', 'required' => false])
             ->add('notRegistered', CheckboxType::class, ['label' => 'Sorties auxquelles je ne suis pas inscrit/e', 'required' => false])
             ->add('passed', CheckboxType::class, ['label' => 'Sorties passées', 'required' => false])

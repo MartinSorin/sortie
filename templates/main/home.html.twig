@@ -78,7 +78,10 @@
                     <td>{{ trip.state.wording }}</td>
                     <td>Inscrit</td>
                     <td><a href={{path('myProfil', {'id':trip.organiser.id})}}>{{ trip.organiser.firstname }}</a></td>
-                    <td><a href={{path('display', {'id':trip.id})}}>Afficher</a> - <a href={{ path('modify', {'id':trip.id})}}>Modifier</a></td>
+                    <td><a href={{path('display', {'id':trip.id})}}>Afficher</a> - <a href={{path('cancel', {'id':trip.id})}}>Annuler</a> -
+                        <a href={{ path('modify', {'id':trip.id})}}>Modifier</a> - <a href={{path('register', {'id':trip.id})}}>S'inscrire</a> -
+                        <a href={{ path('unsubscribe', {'id':trip.id})}}>Se désinscrire</a>
+                        </td>
 
                 </tr>
             {% endfor %}

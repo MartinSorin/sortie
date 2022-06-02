@@ -46,6 +46,9 @@ class TripController extends AbstractController
                 $tripRepository->add($trip, true);
                 $this->addFlash("success", "Sortie Publiée avec succès!");
             }
+
+            return $this->redirectToRoute('home');
+
         }
 
         return $this->render('trip/add.html.twig', [
@@ -102,7 +105,38 @@ class TripController extends AbstractController
             'trip' => $trip,
         ]);
     }
+    #[Route('/register/{id}', name: 'register')]
+    public function register($id,TripRepository $tripRepository): Response
+    {
+        $trip = $tripRepository->find($id);
+        $user = $this->getUser();
+        $trip->addIsRegistered($user);
+        $tripRepository->add($trip,true);
+        $this->addFlash("success", "Inscrit avec succès!");
+        return $this->redirectToRoute('home')
+        ;
+    }
 
+    #[Route('/unsubscribe/{id}', name: 'unsubscribe')]
+    public function unsubscribe($id,TripRepository $tripRepository): Response
+    {
+        $trip = $tripRepository->find($id);
+        $user = $this->getUser();
+        $tabregister = $trip->getIsRegistered();
+        foreach ($tabregister as $value)
+        {
+            if ($value == $user){
+                $trip->removeIsRegistered($user);
+                $tripRepository->add($trip,true);
+                $this->addFlash("success", "Désinscrit avec succès!");
+                return $this->redirectToRoute('home')
+                    ;
+            }
+        }
+        $this->addFlash("warning", "Oups, quelque chose c'est mal passé!");
+        return $this->redirectToRoute('home');
+
+    }
 
 
     #[Route('/modify/{id}', name: 'modify')]
@@ -112,9 +146,7 @@ class TripController extends AbstractController
         $trip = $repository->find($id);
         $user = $this->getUser();
         $state = $stateRepository->findOneBySomeField('En creation');
-        dump($trip);
-        dump($state);
-        dump($user);
+
         if ($trip->getState()->getId() == $state->getId() && $trip->getOrganiser() == $user)
         {
             $form = $this->createForm(TripModifyType::class, $trip);
