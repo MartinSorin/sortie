@@ -66,13 +66,11 @@ class TripController extends AbstractController
 
 
         if ($form->isSubmitted() && $form->isValid()){
-            dump($form);
-            dump($user);
-            if ($trip->getOrganiser()->getId()== $user->getId()){
 
-                dump($form);
-                dump($request);
-                $motif=$request->get();
+            if ($trip->getOrganiser()== $user){
+
+
+                $motif=$form['motif']->getData();
                 $trip->setInfoTrip($description .' ANNULEE Motif: '.$motif);
                 $state=$stateRepository->findOneBySomeField('Annulee');
                 $trip->setState($state);
