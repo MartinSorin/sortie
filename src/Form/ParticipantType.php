@@ -21,10 +21,10 @@ class ParticipantType extends AbstractType
             ->add('firstname',null, ['required'=> false,'label' => 'Prénom :', 'empty_data' => ''])
             ->add('phone',null, ['required'=> false,'label' => 'Téléphone :', 'empty_data' => ''])
             ->add('email',null, ['required'=> false,'label' => 'Email :', 'empty_data' => ''])
-            ->add('password', RepeatedType::class, ['type' => PasswordType::class, 'invalid_message' => 'The password fields must match.',
+            ->add('password', RepeatedType::class, ['type' => PasswordType::class, 'invalid_message' => 'Les champs de mot de passe doivent correspondre.',
                 'options' => ['attr' => ['class' => 'password-field']], 'required' => true, 'first_options'  => ['label' => 'mot de passe :'],
                 'second_options' => ['label' => 'Confirmation :'],])
-            ->add('isAffectedTo', EntityType::class, ['label' => 'Campus', 'choice_label' => 'name', 'class' => 'App\Entity\Campus',
+            ->add('isAffectedTo', EntityType::class, ['label' => 'Campus :', 'choice_label' => 'name', 'class' => 'App\Entity\Campus',
         'required' => false, 'empty_data' => '']);
     }
 

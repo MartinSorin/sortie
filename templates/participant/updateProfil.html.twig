@@ -2,62 +2,69 @@
 
 {% block title %}{{ parent() }} - Mon profil{% endblock %}
 
-{% block head %}<link rel="stylesheet" href={{ asset('css/updateProfil.css') }}>{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href={{ asset('css/updateProfil.css') }}>{% endblock %}
 
 {% block main %}
+
     <h1>Mon profil</h1>
+    <div class="global">
 
 
-    <div>
-        {{ form_start(form) }}<div class="divform">
+        {{ form_start(form) }}
+        <div class="divform">
             {{ form_label(form.username) }}
             {{ form_widget(form.username) }}
             {{ form_errors(form.username) }}</div>
-        <br>
-       <div class="divform">
-                {{ form_label(form.name) }}
-                {{ form_widget(form.name) }}
-                {{ form_errors(form.name) }}</div>
-        <br>
+
+        <div class="divform">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}</div>
+
 
         <div class="divform">
             {{ form_label(form.firstname) }}
             {{ form_widget(form.firstname) }}
             {{ form_errors(form.firstname) }}</div>
-        <br>
+
 
         <div class="divform">
             {{ form_label(form.phone) }}
             {{ form_widget(form.phone) }}
             {{ form_errors(form.phone) }}</div>
-        <br>
+
 
         <div class="divform">
             {{ form_label(form.email) }}
             {{ form_widget(form.email) }}
             {{ form_errors(form.email) }}</div>
-        <br>
+
 
         <div class="divform">
             {{ form_label(form.password.first) }}
             {{ form_widget(form.password.first) }}
             {{ form_errors(form.password.first) }}</div>
-        <br>
 
-            <div
+
+        <div class="divform">
             {{ form_label(form.password.second) }}
             {{ form_widget(form.password.second) }}
             {{ form_errors(form.password.second) }}</div>
-        <br>
 
+        <div class="divform">
+            {{ form_label(form.isAffectedTo) }}
+            {{ form_widget(form.isAffectedTo) }}
+            {{ form_errors(form.isAffectedTo) }}</div>
 
         <div class="button">
-            {{ form_rest(form) }}<button>Enregistrer</button>
-            {{ form_rest(form) }}<button>Annuler</button></div>
-        <br>
+            <button type="submit" name="save" value="save">Enregistrer</button>
+            <button type="submit" name="cancel" value="cancel">Annuler</button>
+        </div>
 
-        {{ form_end(form) }}</div>
 
+        {{ form_end(form) }}
+    </div>
 
 
 

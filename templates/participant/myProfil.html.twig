@@ -6,24 +6,41 @@
     <link rel="stylesheet" href={{ asset('css/myProfil.css') }}>{% endblock %}
 
 {% block main %}
+    <h1> {{ participant.pseudo }}</h1>
 
-    <div class="profil">
-        <h1> {{ participant.pseudo }}</h1>
+    <div class="global">
 
+        <div class="blockPrincipale">
 
-        <div>Prénom : {{ participant.firstname }}</div>
-
-
-        <div>Nom : {{ participant.name }}</div>
-
-
-        <div>Téléphone : {{ participant.phone }}</div>
+        <div class="block">
+            <p>Prénom :</p>
+            <p>{{ participant.firstname }}</p>
+        </div>
 
 
-        <div>Email : {{ participant.email }}</div>
+        <div class="block">
+            <p>Nom :</p>
+            <P>{{ participant.name }}</P>
+        </div>
 
 
-        <div>Campus : {{ participant.isAffectedTo.name }}</div>
+        <div class="block">
+            <P>Téléphone :</P>
+            <p>{{ participant.phone }}</p>
+        </div>
+
+
+        <div class="block">
+            <p>Email :</p>
+            <p>{{ participant.email }}</p>
+        </div>
+
+
+        <div class="block">
+            <p>Campus :</p>
+            <p>{{ participant.isAffectedTo.name }}</p>
+        </div>
+        </div>
 
 
         <div class="button">
