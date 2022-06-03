@@ -17,10 +17,13 @@ header{
 }
 
 nav{
-    min-width: 400px;
+    padding-right: 40px;
+    width: 550px;
+    min-height: auto;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 nav a{

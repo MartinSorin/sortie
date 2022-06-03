@@ -1,3 +1,53 @@
+h2{
+    text-align: center;
+}
+
+input, textarea, #trip_siteOrganiser, #trip_city, #trip_place{
+    background-color: #c2b8b2;
+    height: 30px;
+    width: 200px;
+    border-radius: 10px;
+    border: 1px solid #2f323a;
+    padding-left: 5px;
+}
+
+#trip_dateTimeStart_date_month, #trip_dateTimeStart_date_day, #trip_dateTimeStart_date_year, #trip_dateTimeStart_time_hour, #trip_dateTimeStart_time_minute, #trip_dateLimitInscription_month, #trip_dateLimitInscription_day, #trip_dateLimitInscription_year{
+    background-color: #c2b8b2;
+    height: 30px;
+    width: 70px;
+    border-radius: 10px;
+    border: 1px solid #2f323a;
+    padding-left: 5px;
+}
+
+.block{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.test{
+    width: 35%;
+}
+
+.divform{
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.2em;
+}
+
+#button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 .divform a,.divform button{
     display: flex;
     justify-content: center;
@@ -11,4 +61,26 @@
     color: #c2b8b2;
     margin-top: 10px;
     margin-bottom: 20px;
+}
+
+.divdivplus{
+    width: 50px;
+    height: 50px;
+}
+
+.divPlus{
+    height: 26px;
+    margin-top: 222%;
+}
+
+.divPlus a{
+    background-color: #c2b8b2;
+    color: #2f323a;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
 }

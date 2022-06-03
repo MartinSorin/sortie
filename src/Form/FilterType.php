@@ -15,7 +15,7 @@ class FilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('campus', EntityType::class, ['label' => 'Campus', 'choice_label' => 'name', 'class' => 'App\Entity\Campus', 'required' => false])
+            ->add('campus', EntityType::class, ['label' => 'Campus', 'choice_label' => 'name', 'class' => 'App\Entity\Campus', 'required' => false, 'attr' => ['placeholder' => 'Choisisez un campus']])
             ->add('search', TextType::class, ['label' => 'Le nom de la sortie contient', 'required' => false, 'attr' => ['placeholder' => 'search']])
             ->add('start', DateTimeType::class, ['label' => 'Entre', 'required' => false])
             ->add('end', DateTimeType::class, ['label' => 'et', 'required' => false])

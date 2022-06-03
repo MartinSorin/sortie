@@ -26,11 +26,11 @@ class TripController extends AbstractController
 
         $user = $this->getUser();
 
-        $places = $placeRepository->findAll();
-
         $trip =new Trip();
         $trip->setOrganiser($user);
         $trip->addIsRegistered($user);
+        $trip->setDateTimeStart(new \DateTime('now'));
+        $trip->setDateLimitInscription(new \DateTime('1 day'));
 
         $form = $this->createForm(TripType::class, $trip);
 
@@ -40,14 +40,14 @@ class TripController extends AbstractController
 
             if ($request->get('save')){
                 $state=$stateRepository->findOneBySomeField('En creation');
-                $trip->setState($stateRepository->find($state));
+                $trip->setState($state);
                 $tripRepository->add($trip, true);
                 $this->addFlash("success", "Sortie Enregistrée avec succès!");
             }
 
             if ($request->get('publish')){
                 $state=$stateRepository->findOneBySomeField('Ouverte');
-                $trip->setState($stateRepository->find($state));
+                $trip->setState($state);
                 $tripRepository->add($trip, true);
                 $this->addFlash("success", "Sortie Publiée avec succès!");
             }
@@ -58,7 +58,6 @@ class TripController extends AbstractController
 
         return $this->render('trip/add.html.twig', [
             'form' => $form->createView(),
-            'places' => $places
         ]);
     }
 

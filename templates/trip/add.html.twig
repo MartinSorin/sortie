@@ -7,61 +7,77 @@
 
 {% block main %}
 
-    <div>
-        <h2>Créer une sortie</h2>
+    <h2>Créer une sortie</h2>
 
-        {{ form_start(form) }}
-        <div class="divform">
-            {{ form_label(form.name) }}
-            {{ form_widget(form.name) }}
+
+    {{ form_start(form) }}
+    <div class="block">
+        <div class="test">
+            <div class="divform">
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name) }}
+            </div>
+            <div class="divform">
+                {{ form_label(form.dateTimeStart) }}
+                {{ form_widget(form.dateTimeStart) }}
+            </div>
+            <div class="divform">
+                {{ form_label(form.dateLimitInscription) }}
+                {{ form_widget(form.dateLimitInscription) }}
+            </div>
+            <div class="divform">
+                {{ form_label(form.nbInscriptionsMax) }}
+                {{ form_widget(form.nbInscriptionsMax) }}
+            </div>
+            <div class="divform">
+                {{ form_label(form.duration) }}
+                {{ form_widget(form.duration) }}
+            </div>
+            <div class="divform">
+                {{ form_label(form.infoTrip) }}
+                {{ form_widget(form.infoTrip) }}
+            </div>
         </div>
-        <div class="divform">
-            {{ form_label(form.dateTimeStart) }}
-            {{ form_widget(form.dateTimeStart) }}
+        <div class="test">
+            <div class="divform">
+                {{ form_label(form.siteOrganiser) }}
+                {{ form_widget(form.siteOrganiser) }}
+            </div>
+            <div class="divform">
+                {{ form_label(form.city) }}
+                {{ form_widget(form.city) }}
+            </div>
+            <div class="divform">
+                {{ form_label(form.place) }}
+                {{ form_widget(form.place) }}
+
+            </div>
+            <div class="divform">
+                Rue :
+            </div>
+            <div class="divform">
+                Code postal :
+            </div>
+            <div class="divform">
+                Latitute :
+            </div>
+            <div class="divform">
+                Longitude :
+            </div>
         </div>
-        <div class="divform">
-            {{ form_label(form.dateLimitInscription) }}
-            {{ form_widget(form.dateLimitInscription) }}
+        <div class="divdivplus">
+            <div class="divPlus">
+                <a id="plus" href={{ path('addPlace') }}>+</a>
+            </div>
         </div>
-        <div class="divform">
-            {{ form_label(form.nbInscriptionsMax) }}
-            {{ form_widget(form.nbInscriptionsMax) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.duration) }}
-            {{ form_widget(form.duration) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.infoTrip) }}
-            {{ form_widget(form.infoTrip) }}
-        </div>
-        .
-        <div class="divform">
-            {{ form_label(form.siteOrganiser) }}
-            {{ form_widget(form.siteOrganiser) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.city) }}
-            {{ form_widget(form.city) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.place) }}
-            {{ form_widget(form.place) }}
-            <a href={{ path('addPlace') }}>Add lieu</a>
-        </div>
-        <div class="divform">
+        <div class="divform" id="button">
             {{ form_rest(form) }}
-            {%for place in places%}
-                {{ place.name }}
-            {%endfor%}
 
             <button type="submit" name="save" value="save">Enregistrer</button>
             <button type="submit" name="publish" value="publish">Publier la sortie</button>
             <a href={{ path('home') }}>Annuler</a>
         </div>
-        {{ form_end(form) }}
-
-
     </div>
+    {{ form_end(form) }}
 
 {% endblock %}
