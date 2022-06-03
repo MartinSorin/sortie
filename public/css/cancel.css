@@ -12,3 +12,6 @@
     margin-top: 10px;
     margin-bottom: 20px;
 }
+main{
+    min-height: calc(100vh - 245px);
+}

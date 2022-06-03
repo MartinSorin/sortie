@@ -1,9 +1,13 @@
 .form{
-    width: 60%;
+    width: 100%;
     display: flex;
     justify-content: space-around;
+    height: fit-content;
+    flex-wrap: wrap;
 }
-
+main{
+    min-height: calc(100vh - 245px);
+}
 .block{
     width: 400px;
     margin: 10px;

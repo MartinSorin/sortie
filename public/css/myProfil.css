@@ -5,7 +5,9 @@ h1{
 .profil div{
     text-align: center;
 }
-
+main{
+    min-height: calc(100vh - 245px);
+}
 .button a{
     display: flex;
     justify-content: center;

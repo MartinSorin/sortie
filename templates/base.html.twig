@@ -19,8 +19,7 @@
             </nav>
             {%block header%}{%endblock%}
         </header>
-
-        <main>
+        <div class="alert">
             {%for label,messages in app.flashes%}
                 {%for message in messages%}
                     <div class="alert-{{label}}">
@@ -28,6 +27,10 @@
                     </div>
                 {%endfor%}
             {%endfor%}
+
+        </div>
+        <main class="main">
+
             {% block main %}{% endblock %}
         </main>
 

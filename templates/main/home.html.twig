@@ -88,16 +88,19 @@
                             {%if trip.organiser == user%}
                         - <a href={{path('cancel', {'id':trip.id})}}>Annuler</a>
                             {%endif%}
+
                             {%if trip.organiser != user%}
+                                {% set inscrit = false %}
                                 {%for registred in trip.isRegistered%}
                                     {%if registred == user%}
                                         - <a href={{ path('unsubscribe', {'id':trip.id})}}>Se désinscrire</a>
+                                        {% set inscrit = true %}
                                         {% set break = true %}
                                     {%endif%}
-                                    {%if trip.isRegistered.count < trip.nbInscriptionsMax %}
-                                    - <a href={{path('register', {'id':trip.id})}}>S'inscrire</a>
-                                    {%endif%}
                                 {%endfor%}
+                                {%if trip.isRegistered.count < trip.nbInscriptionsMax and inscrit == false %}
+                                    - <a href={{path('register', {'id':trip.id})}}>S'inscrire</a>
+                                {%endif%}
                             {%endif%}
                         {%endif%}
 

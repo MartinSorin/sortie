@@ -1,4 +1,4 @@
-.divform a,.divform button{
+.divformbutton a,.divformbutton button{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,4 +11,78 @@
     color: #c2b8b2;
     margin-top: 10px;
     margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
+.divformbutton{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+main{
+    min-height: calc(100vh - 245px);
+
+}
+.champselect{
+    width: 46%;
+}
+.divform{
+
+    display: flex;
+
+}
+form {
+    display: block;
+    margin-top: 0em;
+    max-width: 964px;
+}
+.champ{
+    height: 30px;
+    width: 45%;
+    border-radius: 10px;
+    border: 1px dotted rgb(158, 116, 158);
+    padding-left: 5px;
+}
+select{
+    height: 30px;
+    width: 49%;
+    border-radius: 10px;
+    border: 1px dotted rgb(158, 116, 158);
+    padding-left: 5px;
+}
+.champdate input, .champdate select {
+    height: 30px;
+    width: 49%;
+    border-radius: 10px;
+    border: 1px dotted rgb(158, 116, 158);
+    padding-left: 2px;
+}
+.champdate div{
+    width: 50%;
+}
+.champdate{
+    height: 30px;
+    width: 46%;
+    border-radius: 10px;
+    border: 1px dotted rgb(158, 116, 158);
+    padding-left: 0px;
+    display: inline-flex;
+}
+div{
+    text-align: -webkit-center;
+}
+label {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    width: 45%;
+}
+h5{
+    text-align: center;
+}
+/*input , textarea{*/
+/*    display: inline-flex;*/
+/*    text-align: right;*/
+/*    justify-content: center;*/
+/*}*/

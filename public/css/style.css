@@ -1,12 +1,20 @@
+
 img{
     max-width: 150px;
 }
 
 body{
-    background-color: #2f323a;
+    background: linear-gradient(dimgrey , #2f323a) ;
     color: #c2b8b2;
+    background-attachment:fixed ;
+    background-position: center center;
+    background-size: cover ;
     margin-right: 20px;
     margin-left: 30px;
+
+}
+main{
+    min-height: calc(100vh - 245px);
 }
 
 header{
@@ -14,6 +22,29 @@ header{
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
+}
+.alert{
+    display: flex;
+    justify-content: center;
+}
+.alert-success{
+    border: 1px solid green;
+    width: fit-content;
+    height: 19px;
+    background-color: greenyellow;
+    color: black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.alert-warning{
+    border: 1px solid darkred;
+    width: fit-content;
+    height: 19px;
+    background-color: red;
+    color: black;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 nav{

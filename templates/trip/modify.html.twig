@@ -5,7 +5,7 @@
 {% block main %}
 
     <div>
-        <h2>Créer une sortie</h2>
+        <h2>Modifier une sortie</h2>
 
         {{ form_start(form) }}
         <div class="divform">
@@ -31,7 +31,7 @@
         <div class="divform">
             {{ form_label(form.infoTrip) }}
             {{ form_widget(form.infoTrip) }}
-        </div>.
+        </div>
         <div class="divform">
             {{ form_label(form.siteOrganiser) }}
             {{ form_widget(form.siteOrganiser) }}
@@ -45,7 +45,7 @@
         <h5>Rue: {{trip.place.street}}</h5>
         <h5>Code Postal: {{trip.place.city.postalCode}} {{trip.place.city.name}}</h5>
 
-        <div class="divform">
+        <div class="divformbutton">
             {{ form_rest(form) }}
             <button type="submit" name="save" value="save">Enregistrer</button>
             <button type="submit" name="publish" value="publish">Publier la sortie</button>
