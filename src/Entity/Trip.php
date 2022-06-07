@@ -17,8 +17,8 @@ class Trip
     private $id;
 
     #[ORM\Column(type: 'string', length: 100)]
-    #[Assert\NotBlank(['message'=>'Le nom de la sortie est obligatoire'])]
-    #[Assert\Length(['min'=>3,'minMessage' => 'Le nom ne peut avoir moins de 3 caractères','max'=>50, 'maxMessage' => 'Le nom ne peut avoir plus de 100 caractères'])]
+    #[Assert\NotBlank(['message'=>'Le nom de la sortie est obligatoire.'])]
+    #[Assert\Length(['min'=>3,'minMessage' => 'Le nom ne peut avoir moins de 3 caractères','max'=>50, 'maxMessage' => 'Le nom ne peut avoir plus de 100 caractères.'])]
     private $name;
 
     #[ORM\Column(type: 'datetime')]
@@ -27,8 +27,8 @@ class Trip
     private $dateTimeStart;
 
     #[ORM\Column(type: 'integer')]
-    #[Assert\NotBlank(['message'=>'La durée de la sortie est obligatoire'])]
-    #[Assert\GreaterThanOrEqual(30, message: 'durée de la sortie 30 minutes minimum')]
+    #[Assert\NotBlank(['message'=>'La durée de la sortie est obligatoire.'])]
+    #[Assert\GreaterThanOrEqual(30, message: 'durée de la sortie 30 minutes minimum.')]
     private $duration;
 
     #[ORM\Column(type: 'date')]
@@ -38,13 +38,13 @@ class Trip
     private $dateLimitInscription;
 
     #[ORM\Column(type: 'integer')]
-    #[Assert\NotBlank(['message'=>'Le nombre de places est obligatoire'])]
-    #[Assert\LessThan(500, message: 'le nombre maximum de participant doit être de 500')]
-    #[Assert\GreaterThanOrEqual(5, message: 'le nombre minimum de participant doit être de 5')]
+    #[Assert\NotBlank(['message'=>'Le nombre de places est obligatoire.'])]
+    #[Assert\LessThan(500, message: 'le nombre maximum de participant doit être de 500.')]
+    #[Assert\GreaterThanOrEqual(5, message: 'le nombre minimum de participant doit être de 5.')]
     private $nbInscriptionsMax;
 
     #[ORM\Column(type: 'text')]
-    #[Assert\NotBlank(['message'=>'Description de la sortie obligatoire'])]
+    #[Assert\NotBlank(['message'=>'Description de la sortie obligatoire.'])]
     private $infoTrip;
 
     #[ORM\ManyToOne(targetEntity: State::class, inversedBy: 'trips')]
