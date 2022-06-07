@@ -5,28 +5,26 @@ h1{
 
 
 .blockPrincipale{
-    border: solid 1px #b80c09;
-    width: fit-content;
+    border: solid 1px purple;
+    width: 40%;
 
 }
 
 
 .global {
+    border: solid 1px #b80c09;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-  border: solid 1px #b80c09;
+
+
 
 
 }
 
 .block {
-    font-size: 1em;
+    border: solid 1px blue;
     display: flex;
     justify-content: space-between;
-    padding: 10px 50px 20px;
-    border: solid 1px #b80c09;
-    width: 100%;
+
 
 }
 main{

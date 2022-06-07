@@ -88,3 +88,15 @@ main{
     align-items: center;
     text-decoration: none;
 }
+
+li{
+    display: flex;
+    justify-content: end;
+    font-size: 16px ;
+    color: black;
+    background-color: #FF8C00;
+    border: black solid 1px;
+    border-radius: 5px;
+    padding-left: 5px;
+    width: fit-content;
+}

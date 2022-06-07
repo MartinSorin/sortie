@@ -29,18 +29,25 @@ class ParticipantController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $participant->setActive(1);
             $participant->setRoles(['ROLE_ADMIN']);
-            // encode the plain password
-            $participant->setPassword(
-                $userPasswordHasher->hashPassword(
-                    $participant,
-                    $form->get('password')->getData()
-                )
-            );
 
-            $repository->add($participant, true);
+
+            if ($form->get('password')->getData()) {
+                // encode the plain password
+                $participant->setPassword(
+                    $userPasswordHasher->hashPassword(
+                        $participant,
+                        $form->get('password')->getData()
+                    )
+                );
+
+                $repository->add($participant, true);
+            }
+
+
+
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('home');
+            // return $this->redirectToRoute('home');
         }
 
         return $this->render('participant/updateProfil.html.twig', [
@@ -61,7 +68,6 @@ class ParticipantController extends AbstractController
 
 
     }
-
 
 
 }
