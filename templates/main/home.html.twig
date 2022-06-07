@@ -57,8 +57,8 @@
     </div>
     {{ form_end(form) }}
 
-    <div class="table_scroll">
-        <table>
+    <div class="tb1-header">
+        <table class="tabHeader">
             <tr>
                 <th>Nom de la sortie</th>
                 <th>Date de la sortie</th>
@@ -69,6 +69,10 @@
                 <th>Organisateur</th>
                 <th>Actions</th>
             </tr>
+        </table>
+    </div>
+    <div class="tbl-content">
+        <table class="tabContent">
             {% for trip in trips %}
                 <tr>
                     <td>{{ trip.name }}</td>

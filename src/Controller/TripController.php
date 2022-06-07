@@ -34,7 +34,7 @@ class TripController extends AbstractController
         $trip->setOrganiser($user);
         $trip->addIsRegistered($user);
         $trip->setDateTimeStart(new \DateTime('now'));
-        $trip->setDateLimitInscription(new \DateTime('1 day'));
+        $trip->setDateLimitInscription(new \DateTime('now'));
 
         $form = $this->createForm(TripType::class, $trip);
 

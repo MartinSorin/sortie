@@ -61,10 +61,7 @@
                 <input type="hidden" id="divPlace" value={{path('api_place', {'id':25})}}>
             </div>
             {{ form_errors(form.place) }}
-            <div class="divform">
-                Rue :
 
-            </div>
             <div id="place">
 
             </div>
@@ -88,8 +85,14 @@
 {%block script%}
     <script>
         document.getElementById('trip_place').addEventListener('change', function (){
-            let path = document.getElementById('divPlace').value
-            fetch(path, {method: 'GET'})
+
+            let id = document.getElementById('trip_place').value
+
+            console.log(id)
+
+            let pathtest = "api/place/" + id
+
+            fetch(pathtest, {method: 'GET'})
                 .then(function (response) {
                     return response.json()
                 }).then(function (data) {
