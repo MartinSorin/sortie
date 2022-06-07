@@ -12,11 +12,13 @@
             <div class="logo">
                 <a href={{path('home')}}><img src={{asset('img/logo.png')}}></a>
             </div>
+            {%block nav%}
             <nav>
                 <a href={{path('home')}}>Acceuil</a>
                 <a href={{path('updateProfil')}}>Mon profil</a>
                 <a href={{path('app_logout')}}>Déconnexion</a>
             </nav>
+            {%endblock%}
             {%block header%}{%endblock%}
         </header>
         <div class="alert">

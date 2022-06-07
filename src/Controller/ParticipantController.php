@@ -20,7 +20,10 @@ class ParticipantController extends AbstractController
 
         $participant = $this->getUser();
         //$participant->setPassword('');
-
+        if (!$this->getUser()) {
+            $this->addFlash("warning", "Authentification obligatoire!");
+            return $this->redirectToRoute('app_login');
+        }
 
         $form = $this->createForm(ParticipantType::class, $participant);
 
@@ -53,6 +56,10 @@ class ParticipantController extends AbstractController
     #[Route('/myProfil/{id}', name: 'myProfil')]
     public function myProfil($id, ParticipantRepository $repo): Response
     {
+        if (!$this->getUser()) {
+            $this->addFlash("warning", "Authentification obligatoire!");
+            return $this->redirectToRoute('app_login');
+        }
         $participant = $repo->find($id);
         return $this->render('participant/myProfil.html.twig', [
             'participant' => $participant,
