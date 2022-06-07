@@ -45,7 +45,7 @@
                 {% for participant in trip.isRegistered %}
                     <tr>
                         <td>{{ participant.username }}</td>
-                        <td>{{ participant.name }} {{ participant.firstname }}</td>
+                        <td><a href={{path('myProfil', {'id':trip.organiser.id})}}>{{ participant.name }} {{ trip.organiser.firstname }}</a></td>
                     </tr>
                 {% endfor %}
             </table>

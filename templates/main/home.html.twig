@@ -31,19 +31,19 @@
             </div>
         </div>
         <div class="block">
-            <div class="divform">
+            <div class="divCheck">
                 {{ form_widget(form.organiser) }}
                 {{ form_label(form.organiser) }}
             </div>
-            <div class="divform">
+            <div class="divCheck">
                 {{ form_widget(form.registered) }}
                 {{ form_label(form.registered) }}
             </div>
-            <div class="divform">
+            <div class="divCheck">
                 {{ form_widget(form.notRegistered) }}
                 {{ form_label(form.notRegistered) }}
             </div>
-            <div class="divform">
+            <div class="divCheck">
                 {{ form_widget(form.passed) }}
                 {{ form_label(form.passed) }}
             </div>
@@ -78,7 +78,7 @@
                     <td>{{ trip.name }}</td>
                     <td>{{ trip.dateTimeStart|date("d/m/Y H:i") }}</td>
                     <td>{{ trip.dateLimitInscription|date("d/m/Y") }}</td>
-                    <td>{{ trip.nbInscriptionsMax }}</td>
+                    <td style="text-align: center">{{ trip.isRegistered.count }} / {{ trip.nbInscriptionsMax }}</td>
                     <td>{{ trip.state.wording }}</td>
                     <td>
                         {%for participant in trip.isRegistered%}

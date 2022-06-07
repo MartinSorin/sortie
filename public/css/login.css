@@ -1,38 +1,39 @@
 h1{
     text-align: center;
-    color: #DDDDDD;
 }
 
-
-.blockPrincipale{
-    border: solid 1px purple;
-    width: 40%;
-
-}
-
-
-.global {
-    border: solid 1px #b80c09;
+main{
     display: flex;
     justify-content: center;
-
-
-
 }
 
-.block {
-    border: solid 1px blue;
-    display: flex;
-    justify-content: space-between;
+.login, .valid{
     font-size: 1.2em;
-
-}
-main{
-    min-height: calc(100vh - 245px);
 }
 
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 30px;
+}
 
-.button a,.button button{
+.valid{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#inputEmail, #inputPassword{
+    background-color: #c2b8b2;
+    height: 30px;
+    width: 200px;
+    border-radius: 10px;
+    border: 1px solid #2f323a;
+    padding-left: 5px;
+}
+
+button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,12 +46,4 @@ main{
     color: #c2b8b2;
     margin-top: 10px;
     margin-bottom: 20px;
-
-}
-
-
-.button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
