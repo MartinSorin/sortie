@@ -6,6 +6,7 @@ use App\Repository\TripRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: TripRepository::class)]
 class Trip
@@ -16,21 +17,34 @@ class Trip
     private $id;
 
     #[ORM\Column(type: 'string', length: 100)]
+    #[Assert\NotBlank(['message'=>'Le nom de la sortie est obligatoire'])]
+    #[Assert\Length(['min'=>3,'minMessage' => 'Le nom ne peut avoir moins de 3 caractères','max'=>50, 'maxMessage' => 'Le nom ne peut avoir plus de 100 caractères'])]
     private $name;
 
     #[ORM\Column(type: 'datetime')]
+    #[Assert\NotBlank(message: "Votre sortie doit avoir une date et une heure de début.")]
+    #[Assert\GreaterThan("today", message: "La date de début de l'activité doit être postérieure à aujourd'hui.")]
     private $dateTimeStart;
 
     #[ORM\Column(type: 'integer')]
+    #[Assert\NotBlank(['message'=>'La durée de la sortie est obligatoire'])]
+    #[Assert\GreaterThanOrEqual(30, message: 'durée de la sortie 30 minutes minimum')]
     private $duration;
 
     #[ORM\Column(type: 'date')]
+    #[Assert\NotBlank(message: "Votre sortie doit avoir une date limite d'inscription.")]
+    #[Assert\LessThan(propertyPath:"dateTimeStart", message: "La date limite d'inscription doit être antérieure à la date de début.")]
+    #[Assert\GreaterThanOrEqual("today", message: "La date limite d'inscription doit être postérieure à aujourd'hui.")]
     private $dateLimitInscription;
 
     #[ORM\Column(type: 'integer')]
+    #[Assert\NotBlank(['message'=>'Le nombre de places est obligatoire'])]
+    #[Assert\LessThan(500, message: 'le nombre maximum de participant doit être de 500')]
+    #[Assert\GreaterThanOrEqual(5, message: 'le nombre minimum de participant doit être de 5')]
     private $nbInscriptionsMax;
 
     #[ORM\Column(type: 'text')]
+    #[Assert\NotBlank(['message'=>'Description de la sortie obligatoire'])]
     private $infoTrip;
 
     #[ORM\ManyToOne(targetEntity: State::class, inversedBy: 'trips')]
