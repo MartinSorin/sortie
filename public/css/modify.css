@@ -28,7 +28,7 @@ main{
     width: 46%;
 }
 .divform{
-
+    padding: 16px;
     display: flex;
 
 }
@@ -41,21 +41,21 @@ form {
     height: 30px;
     width: 45%;
     border-radius: 10px;
-    border: 1px dotted rgb(158, 116, 158);
+    border: 1px solid #c2b8b2;
     padding-left: 5px;
 }
 select{
     height: 30px;
     width: 49%;
     border-radius: 10px;
-    border: 1px dotted rgb(158, 116, 158);
+    border: 1px solid #c2b8b2;
     padding-left: 5px;
 }
 .champdate input, .champdate select {
     height: 30px;
-    width: 49%;
+    width: 48%;
     border-radius: 10px;
-    border: 1px dotted rgb(158, 116, 158);
+    border: 1px solid #c2b8b2;
     padding-left: 2px;
 }
 .champdate div{
@@ -65,7 +65,7 @@ select{
     height: 30px;
     width: 46%;
     border-radius: 10px;
-    border: 1px dotted rgb(158, 116, 158);
+    border: 1px solid #c2b8b2;
     padding-left: 0px;
     display: inline-flex;
 }

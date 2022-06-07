@@ -3,6 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Sortir{% endblock %}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!-- CSS only -->
+        <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         <link rel="stylesheet" href={{asset('css/style.css')}}>
         {%block head%}{%endblock%}
@@ -12,11 +16,13 @@
             <div class="logo">
                 <a href={{path('home')}}><img src={{asset('img/logo.png')}}></a>
             </div>
+            {%block nav%}
             <nav>
                 <a href={{path('home')}}>Acceuil</a>
                 <a href={{path('updateProfil')}}>Mon profil</a>
                 <a href={{path('app_logout')}}>Déconnexion</a>
             </nav>
+            {%endblock%}
             {%block header%}{%endblock%}
         </header>
         <div class="alert">

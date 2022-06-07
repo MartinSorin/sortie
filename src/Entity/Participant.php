@@ -63,6 +63,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Length(['max'=>50, 'maxMessage' => 'Le pseudo ne peut avoir plus de 50 caractères.'])]
     private $username;
 
+
     public function __construct()
     {
         $this->trips = new ArrayCollection();

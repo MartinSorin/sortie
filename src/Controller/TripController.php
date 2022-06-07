@@ -25,6 +25,10 @@ class TripController extends AbstractController
     {
 
         $user = $this->getUser();
+        if (!$this->getUser()) {
+            $this->addFlash("warning", "Authentification obligatoire!");
+            return $this->redirectToRoute('app_login');
+        }
 
         $trip =new Trip();
         $trip->setOrganiser($user);
@@ -64,7 +68,10 @@ class TripController extends AbstractController
     #[Route('/addPlace', name: 'addPlace')]
     public function addPlace(Request $request, PlaceRepository $placeRepository): Response
     {
-
+        if (!$this->getUser()) {
+            $this->addFlash("warning", "Authentification obligatoire!");
+            return $this->redirectToRoute('app_login');
+        }
         $place = new Place();
 
         $form = $this->createForm(PlaceType::class, $place);
@@ -87,6 +94,10 @@ class TripController extends AbstractController
     #[Route('/cancel/{id}', name: 'cancel')]
     public function cancel($id,TripRepository $repository, Request $request, StateRepository $stateRepository): Response
     {
+        if (!$this->getUser()) {
+            $this->addFlash("warning", "Authentification obligatoire!");
+            return $this->redirectToRoute('app_login');
+        }
         $trip =$repository->find($id);
         /**
          * @var Participant $user
@@ -126,6 +137,10 @@ class TripController extends AbstractController
     #[Route('/seeTrip/{id}', name: 'display')]
     public function display($id,TripRepository $tripRepository): Response
     {
+        if (!$this->getUser()) {
+            $this->addFlash("warning", "Authentification obligatoire!");
+            return $this->redirectToRoute('app_login');
+        }
         $trip = $tripRepository->find($id);
 
         return $this->render('trip/see.html.twig', [
@@ -135,6 +150,10 @@ class TripController extends AbstractController
     #[Route('/register/{id}', name: 'register')]
     public function register($id,TripRepository $tripRepository): Response
     {
+        if (!$this->getUser()) {
+            $this->addFlash("warning", "Authentification obligatoire!");
+            return $this->redirectToRoute('app_login');
+        }
         $trip = $tripRepository->find($id);
         $user = $this->getUser();
         $trip->addIsRegistered($user);
@@ -147,6 +166,10 @@ class TripController extends AbstractController
     #[Route('/unsubscribe/{id}', name: 'unsubscribe')]
     public function unsubscribe($id,TripRepository $tripRepository): Response
     {
+        if (!$this->getUser()) {
+            $this->addFlash("warning", "Authentification obligatoire!");
+            return $this->redirectToRoute('app_login');
+        }
         $trip = $tripRepository->find($id);
         $user = $this->getUser();
         $tabregister = $trip->getIsRegistered();
@@ -173,7 +196,10 @@ class TripController extends AbstractController
         $trip = $repository->find($id);
         $user = $this->getUser();
         $state = $stateRepository->findOneBySomeField('En creation');
-
+        if (!$this->getUser()) {
+            $this->addFlash("warning", "Authentification obligatoire!");
+            return $this->redirectToRoute('app_login');
+        }
         if ($trip->getState()->getId() == $state->getId() && $trip->getOrganiser() == $user)
         {
             $form = $this->createForm(TripModifyType::class, $trip);
@@ -222,6 +248,10 @@ class TripController extends AbstractController
     #[Route('/publish/{id}', name: 'publish')]
     public function publish($id,TripRepository $tripRepository,StateRepository $stateRepository): Response
     {
+        if (!$this->getUser()) {
+            $this->addFlash("warning", "Authentification obligatoire!");
+            return $this->redirectToRoute('app_login');
+        }
         $trip = $tripRepository->find($id);
         $state = $stateRepository->findOneBySomeField('Ouverte');
         $trip->setState($state);

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Trip;
 use App\Form\FilterType;
 use App\Form\Model\Filter;
 use App\Repository\CampusRepository;
@@ -19,10 +20,14 @@ class MainController extends AbstractController
     {
         $user = $this->getUser();
         $filter = new Filter();
-
+        if (!$this->getUser()) {
+            $this->addFlash("warning", "Authentification obligatoire!");
+            return $this->redirectToRoute('app_login');
+        }
         $trips = $tripRepository->filter($filter, $user, $stateRepository);
         $campus = $campusRepository->findAll();
-
+        //permet la mise à jour des états dans la base de donnée
+        $tripsSorted = $tripRepository->sorted($stateRepository,$trips);
 
         $form = $this->createForm(FilterType::class, $filter);
 
@@ -33,7 +38,7 @@ class MainController extends AbstractController
         }
 
         return $this->render('main/home.html.twig', [
-            'trips' => $trips,
+            'trips' => $tripsSorted,
             'campusList' => $campus,
             'form' => $form->createView(),
             'user' => $user
