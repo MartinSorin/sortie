@@ -92,6 +92,8 @@ class TripRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+
+
 //    /**
 //     * @return Trip[] Returns an array of Trip objects
 //     */
@@ -116,4 +118,73 @@ class TripRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    /**
+     * @return Trip[] Returns an array of Trip objects
+     */
+    public function sorted(StateRepository $stateRepository, mixed $trips): array
+    {
+        $cloture=$stateRepository->findOneBySomeField('Cloturee');
+        $historisee=$stateRepository->findOneBySomeField('Historisee');
+        $terminee=$stateRepository->findOneBySomeField('Terminee');
+        $encours=$stateRepository->findOneBySomeField('En cours');
+        $annulee=$stateRepository->findOneBySomeField('Annulee');
+        $ouverte=$stateRepository->findOneBySomeField('Ouverte');
+
+        foreach ($trips as $value) {
+
+            /**
+             * @var $value Trip
+             */
+            $datefin0 = $value->getDateTimeStart();
+            $datefin01 = clone $datefin0;
+            $datefin = date_modify($datefin01, '+' . $value->getDuration() . ' minutes');
+            $datefin1 = clone $datefin;
+            $datefinHisto = date_modify($datefin1, '+1 month');
+            $dateNow = new \DateTime('now');
+
+            if ($value->getState() == $ouverte) {
+                if ($value->getIsRegistered()->count() == $value->getNbInscriptionsMax()) {
+                    $value->setState($cloture);
+                    $this->add($value, true);
+                }
+                if ($dateNow > $value->getDateLimitInscription()) {
+                    $value->setState($cloture);
+                    $this->add($value, true);
+
+                }
+                if ($datefin <= $dateNow) {
+                    $value->setState($terminee);
+                    $this->add($value, true);
+                }
+                if ($dateNow > $value->getDateTimeStart() && $datefin > $dateNow) {
+                    $value->setState($encours);
+                    $this->add($value, true);
+                }
+
+
+            }
+            if ($value->getState() == $encours) {
+                if ($dateNow >= $datefin) {
+                    $value->setState($terminee);
+                    $this->add($value, true);
+                }
+            }
+            if (($value->getState() == $cloture && $dateNow > $datefinHisto) || ($value->getState() == $annulee && $dateNow > $datefinHisto) || $datefinHisto <= $dateNow) {
+                if ($datefinHisto >= $datefin) {
+                    $value->setState($historisee);
+                    $this->add($value, true);
+                }
+
+            }
+            if ($value->getState() == $cloture && $value->getDateLimitInscription() < $dateNow) {
+                if ($value->getIsRegistered()->count() < $value->getNbInscriptionsMax()) {
+                    $value->setState($ouverte);
+                    $this->add($value, true);
+                }
+            }
+        }
+        return $trips;
+    }
+
 }

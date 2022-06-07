@@ -26,67 +26,8 @@ class MainController extends AbstractController
         }
         $trips = $tripRepository->filter($filter, $user, $stateRepository);
         $campus = $campusRepository->findAll();
-        $cloture=$stateRepository->findOneBySomeField('Cloturee');
-        $historisee=$stateRepository->findOneBySomeField('Historisee');
-        $terminee=$stateRepository->findOneBySomeField('Terminee');
-        $encours=$stateRepository->findOneBySomeField('En cours');
-        $annulee=$stateRepository->findOneBySomeField('Annulee');
-        $ouverte=$stateRepository->findOneBySomeField('Ouverte');
-
-        foreach ($trips as $value) {
-
-            /**
-             * @var $value Trip
-             */
-            $datefin0= $value->getDateTimeStart();
-            $datefin01 = clone $datefin0;
-            $datefin = date_modify($datefin01, '+' . $value->getDuration() . ' minutes');
-            $datefin1 = clone $datefin;
-            $datefinHisto = date_modify($datefin1, '+1 month');
-            $dateNow = new \DateTime('now');
-
-            if ($value->getState() == $ouverte) {
-                if ($value->getIsRegistered()->count() == $value->getNbInscriptionsMax()) {
-                    $value->setState($cloture);
-                    $tripRepository->add($value, true);
-                }
-                if ($dateNow > $value->getDateLimitInscription()){
-                    $value->setState($cloture);
-                    $tripRepository->add($value, true);
-
-                }
-                if ($datefin <= $dateNow) {
-                    $value->setState($terminee);
-                    $tripRepository->add($value,true);
-                }
-                if ($dateNow >$value->getDateTimeStart() && $datefin > $dateNow ) {
-                    $value->setState($encours);
-                    $tripRepository->add($value, true);
-                }
-
-
-            }
-            if ($value->getState() == $encours){
-                if ($dateNow >= $datefin) {
-                    $value->setState($terminee);
-                    $tripRepository->add($value,true);
-                }
-            }
-            if (($value->getState() == $cloture && $dateNow>$datefinHisto) ||  ($value->getState() == $annulee && $dateNow>$datefinHisto) || $datefinHisto <= $dateNow){
-                if ($datefinHisto >= $datefin) {
-                    $value->setState($historisee);
-                    $tripRepository->add($value, true);
-                }
-
-            }
-            if ($value->getState()==$cloture && $value->getDateLimitInscription()<$dateNow){
-                if ($value->getIsRegistered()->count() < $value->getNbInscriptionsMax()){
-                    $value->setState($ouverte);
-                    $tripRepository->add($value,true);
-                }
-            }
-
-    }
+        //permet la mise à jour des états dans la base de donnée
+        $tripsSorted = $tripRepository->sorted($stateRepository,$trips);
 
         $form = $this->createForm(FilterType::class, $filter);
 
@@ -97,7 +38,7 @@ class MainController extends AbstractController
         }
 
         return $this->render('main/home.html.twig', [
-            'trips' => $trips,
+            'trips' => $tripsSorted,
             'campusList' => $campus,
             'form' => $form->createView(),
             'user' => $user

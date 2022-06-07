@@ -26,6 +26,7 @@ class ParticipantType extends AbstractType
                 'second_options' => ['label' => 'Confirmation :'],])
             ->add('isAffectedTo', EntityType::class, ['label' => 'Campus :', 'choice_label' => 'name', 'class' => 'App\Entity\Campus',
         'required' => false, 'empty_data' => '']);
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void
