@@ -14,8 +14,22 @@ main{
 }
 
 .divform{
-    width: 300px;
-    padding: 5px;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.2em;
+}
+
+select, #filter_search, #filter_start, #filter_end{
+    background-color: #c2b8b2;
+    height: 30px;
+    width: 200px;
+    border-radius: 10px;
+    border: 1px solid #2f323a;
+    padding-left: 5px;
 }
 
 #date{
@@ -53,6 +67,11 @@ table{
     width: 100%;
     margin-top: 20px;
     margin-bottom: 10px;
+    overflow-y: scroll;
+}
+.table_scroll{
+    height: 30em;
+    overflow-y: scroll;
 }
 
 th, td {

@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Trip;
-use Doctrine\DBAL\Types\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -24,7 +23,7 @@ class TripType extends AbstractType
     {
         $builder
             ->add('name', null, ['label' => 'Nom de la sortie : ', 'required' => false])
-            ->add('dateTimeStart', DateTimeType::class, ['label' => 'Date et heure de la sortie : ', 'date_widget' => 'single_text'])
+            ->add('dateTimeStart', DateTimeType::class, ['label' => 'Date et heure de la sortie : ', 'widget' => 'single_text'])
             ->add('duration', null, ['label' => 'Durée : ', 'required' => false])
             ->add('dateLimitInscription', DateType::class, ['label' => 'Date limite de l\'inscription : ', 'widget' => 'single_text'])
             ->add('nbInscriptionsMax', null, ['label' => 'Nombre de places : ', 'required' => false])

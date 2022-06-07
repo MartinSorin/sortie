@@ -59,19 +59,14 @@
                 {{ form_label(form.place) }}
                 {{ form_widget(form.place) }}
                 {{ form_errors(form.place) }}
-
+                <input type="hidden" id="divPlace" value={{path('api_place', {'id':25})}}>
             </div>
             <div class="divform">
                 Rue :
+
             </div>
-            <div class="divform">
-                Code postal :
-            </div>
-            <div class="divform">
-                Latitute :
-            </div>
-            <div class="divform">
-                Longitude :
+            <div id="place">
+
             </div>
         </div>
         <div class="divdivplus">
@@ -90,3 +85,24 @@
     {{ form_end(form) }}
 
 {% endblock %}
+{%block script%}
+    <script>
+        document.getElementById('trip_place').addEventListener('change', function (){
+            let path = document.getElementById('divPlace').value
+            fetch(path, {method: 'GET'})
+                .then(function (response) {
+                    return response.json()
+                }).then(function (data) {
+
+                let div = document.createElement('div')
+
+                div.innerHTML ="<div class='divform'><p> Rue : </p><p>" + data.street + "</p></div>" +
+                    "<div class='divform'><p>Code postal : </p><p>" + data.postalCode + "</p></div>" +
+                    "<div class='divform'><p>Latitude : </p><p>" + data.latitude + "</p></div>" +
+                    "<div class='divform'><p>Longitude : </p><p>" + data.longitude + "</p></div>"
+
+                document.getElementById('place').appendChild(div)
+            })
+        })
+    </script>
+{%endblock%}

@@ -74,3 +74,8 @@ footer{
     display: flex;
     justify-content: center;
 }
+
+footer a{
+    color: #c2b8b2;
+    text-decoration: none;
+}
