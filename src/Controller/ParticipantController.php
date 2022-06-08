@@ -50,7 +50,7 @@ class ParticipantController extends AbstractController
 
             // do anything else you need here, like send an email
 
-            // return $this->redirectToRoute('home');
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('participant/updateProfil.html.twig', [

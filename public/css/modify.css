@@ -42,6 +42,7 @@ form {
     width: 45%;
     border-radius: 10px;
     border: 1px solid #c2b8b2;
+    background-color: #c2b8b2;
     padding-left: 5px;
 }
 select{
@@ -49,6 +50,7 @@ select{
     width: 49%;
     border-radius: 10px;
     border: 1px solid #c2b8b2;
+    background-color: #c2b8b2;
     padding-left: 5px;
 }
 .champdate input, .champdate select {
@@ -56,6 +58,7 @@ select{
     width: 48%;
     border-radius: 10px;
     border: 1px solid #c2b8b2;
+    background-color: #c2b8b2;
     padding-left: 2px;
 }
 .champdate div{
@@ -66,6 +69,7 @@ select{
     width: 46%;
     border-radius: 10px;
     border: 1px solid #c2b8b2;
+    background-color: #c2b8b2;
     padding-left: 0px;
     display: inline-flex;
 }
@@ -77,9 +81,16 @@ label {
     display: flex;
     justify-content: flex-end;
     width: 45%;
+    font-size: 1.2em;
+    padding-right: 5px;
 }
 h5{
     text-align: center;
+    font-size: 1.2em;
+}
+
+h2{
+    font-size: 2.5em;
 }
 /*input , textarea{*/
 /*    display: inline-flex;*/
