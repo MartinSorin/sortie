@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ParticipantRepository;
+use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +16,7 @@ class ParticipantController extends AbstractController
 {
 
     #[Route('/updateProfil', name: 'updateProfil')]
-    public function updateProfil(Request $request, UserPasswordHasherInterface $userPasswordHasher, ParticipantRepository $repository): Response
+    public function updateProfil(Request $request, UserPasswordHasherInterface $userPasswordHasher, ParticipantRepository $repository, FileUploader $fileUploader): Response
     {
 
         $participant = $this->getUser();
@@ -45,6 +46,12 @@ class ParticipantController extends AbstractController
 
                 $repository->add($participant, true);
             }
+            $imageprofile = $form->get('imageProfile')->getData();
+            if ($imageprofile) {
+                $brochureFileName = $fileUploader->upload($imageprofile);
+                $participant->setImageProfile($brochureFileName);
+                $repository->add($participant, true);
+            }
 
 
 
@@ -55,6 +62,7 @@ class ParticipantController extends AbstractController
 
         return $this->render('participant/updateProfil.html.twig', [
             'form' => $form->createView(),
+            'participant'=>$participant,
         ]);
 
     }

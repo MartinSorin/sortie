@@ -8,6 +8,7 @@
 {% block main %}
 
     <h1>Mon profil</h1>
+    <img class="imageProfile" src="{{ asset('img/' ~participant.imageProfile) }}" alt="Photo du profil">
     <div class="global">
 
 
@@ -59,6 +60,12 @@
             </div>
         {{ form_errors(form.isAffectedTo) }}
 
+        <div class="divform">
+            {{ form_label(form.imageProfile) }}
+            {{ form_widget(form.imageProfile) }}
+            {{ form_errors(form.imageProfile) }}</div>
+
+
         <div class="button">
             <button type="submit" name="save" value="save">Enregistrer</button>
             <button type="submit" name="cancel" value="cancel">Annuler</button>
@@ -66,7 +73,10 @@
 
 
         {{ form_end(form) }}
+
     </div>
+
+
 
 
 

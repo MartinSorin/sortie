@@ -10,7 +10,6 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 #[ORM\Entity(repositoryClass: ParticipantRepository::class)]
 class Participant implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -63,6 +62,8 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Length(['max'=>50, 'maxMessage' => 'Le pseudo ne peut avoir plus de 50 caractères.'])]
     private $username;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $imageProfile;
 
     public function __construct()
     {
@@ -253,6 +254,18 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUsername(?string $username): self
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    public function getImageProfile(): ?string
+    {
+        return $this->imageProfile;
+    }
+
+    public function setImageProfile(?string $imageProfile): self
+    {
+        $this->imageProfile = $imageProfile;
 
         return $this;
     }

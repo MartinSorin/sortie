@@ -111,7 +111,7 @@
                         {%if trip.state.wording != 'Ouverte' %}
                             <a href={{path('display', {'id':trip.id})}}>Afficher</a>
                             {%if trip.organiser == user%}
-                                {%if trip.state.wording != 'En création'%}
+                                {%if trip.state.wording == 'En creation'%}
                                     - <a href={{ path('modify', {'id':trip.id})}}>Modifier</a>  -
                                     <a href={{ path('publish', {'id':trip.id})}}>Publier</a>
                                 {%endif%}
