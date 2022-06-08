@@ -15,47 +15,49 @@
         <div class="divform">
             {{ form_label(form.username) }}
             {{ form_widget(form.username) }}
-            {{ form_errors(form.username) }}</div>
+            </div>
+        {{ form_errors(form.username) }}
 
         <div class="divform">
             {{ form_label(form.name) }}
             {{ form_widget(form.name) }}
-            {{ form_errors(form.name) }}</div>
-
+           </div>
+        {{ form_errors(form.name) }}
 
         <div class="divform">
             {{ form_label(form.firstname) }}
             {{ form_widget(form.firstname) }}
-            {{ form_errors(form.firstname) }}</div>
-
+            </div>
+        {{ form_errors(form.firstname) }}
 
         <div class="divform">
             {{ form_label(form.phone) }}
             {{ form_widget(form.phone) }}
-            {{ form_errors(form.phone) }}</div>
-
+            </div>
+        {{ form_errors(form.phone) }}
 
         <div class="divform">
             {{ form_label(form.email) }}
             {{ form_widget(form.email) }}
-            {{ form_errors(form.email) }}</div>
-
+          </div>
+        {{ form_errors(form.email) }}
 
         <div class="divform">
             {{ form_label(form.password.first) }}
             {{ form_widget(form.password.first) }}
-            {{ form_errors(form.password.first) }}</div>
-
+          </div>
+        {{ form_errors(form.password.first) }}
 
         <div class="divform">
             {{ form_label(form.password.second) }}
             {{ form_widget(form.password.second) }}
-            {{ form_errors(form.password.second) }}</div>
-
+           </div>
+        {{ form_errors(form.password.second) }}
         <div class="divform">
             {{ form_label(form.isAffectedTo) }}
             {{ form_widget(form.isAffectedTo) }}
-            {{ form_errors(form.isAffectedTo) }}</div>
+            </div>
+        {{ form_errors(form.isAffectedTo) }}
 
         <div class="button">
             <button type="submit" name="save" value="save">Enregistrer</button>

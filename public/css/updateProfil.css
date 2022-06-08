@@ -5,12 +5,10 @@
     border: 1px #b80c09;
 }
 
-
-
 h1{
+    font-size: 2.5em;
     text-align: center;
     color: #DDDDDD;
-
 }
 
 .divform{
@@ -18,16 +16,12 @@ h1{
     font-size: 20px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px 50px 20px;
     border: 1px #b80c09;
     width: 80%;
-
-
-
-
-
-
 }
+
 .button button{
     display: flex;
     justify-content: center;
@@ -41,17 +35,14 @@ h1{
     color: #c2b8b2;
     margin-top: 10px;
     margin-bottom: 20px;
-
-
+    cursor: pointer;
 }
 
 .button{
     display: flex;
-
     align-items: center;
     padding: 10px 50px 20px;
     justify-content: space-around;
-
 }
 
 input, select{
@@ -67,14 +58,20 @@ main{
     min-height: calc(100vh - 245px);
 }
 
+ul{
+    display: flex;
+    justify-content: flex-end;
+}
+
 li{
     display: flex;
-    justify-content: end;
     font-size: 16px ;
     color: black;
     background-color: #FF8C00;
     border: black solid 1px;
     border-radius: 5px;
     padding-left: 5px;
+    padding-right: 5px;
     width: fit-content;
+
 }

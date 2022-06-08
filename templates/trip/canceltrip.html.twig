@@ -12,14 +12,19 @@
     <h5>Lieu: {{trip.place.name}} {{trip.place.street}} {{trip.place.city.postalCode}} {{trip.place.city.name}}</h5>
     {{ form_start(form) }}
 
+<div class="block">
         <div class="divform">
             {{ form_label(form.motif) }}
             {{ form_widget(form.motif) }}
         </div>
+
         <div class="divform">
             {{ form_rest(form) }}
             <button type="submit" name="save" value="save">Enregistrer</button>
             <a href="{{path('home')}}">Annuler</a>
         </div>
+</div>
+
+
     {{ form_end(form) }}
 {% endblock %}

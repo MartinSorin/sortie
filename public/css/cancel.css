@@ -1,3 +1,24 @@
+h2{
+    font-size: 2.5em;
+    text-align: center;
+    color: #DDDDDD;
+}
+
+h5{
+   display: flex;
+    justify-content: center;
+    font-size: 1.2em;
+}
+
+.divform{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 50px 20px;
+    width: 20%;
+
+}
+
+
 .divform a,.divform button{
     display: flex;
     justify-content: center;
@@ -14,4 +35,16 @@
 }
 main{
     min-height: calc(100vh - 245px);
+}
+
+textarea{
+    border-radius: 10px;
+    border: black solid 1px;
+}
+
+.block{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }

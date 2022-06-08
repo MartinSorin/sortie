@@ -21,12 +21,12 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 50)]
     #[Assert\NotBlank(['message'=>'Le nom du participant est obligatoire.'])]
-    #[Assert\Length(['min'=>2,'minMessage' => 'Le nom ne peut avoir moins de 2 caractères','max'=>50, 'maxMessage' => 'Le nom ne peut avoir plus de 50 caractères.'])]
+    #[Assert\Length(['max'=>50, 'maxMessage' => 'Le nom ne peut avoir plus de 50 caractères.'])]
     private $name;
 
     #[ORM\Column(type: 'string', length: 50)]
     #[Assert\NotBlank(['message'=>'Le prénom du participant est obligatoire.'])]
-    #[Assert\Length(['min'=>2,'minMessage' => 'Le prénom ne peut avoir moins de 2 caractères','max'=>50, 'maxMessage' => 'Le prénom ne peut avoir plus de 50 caractères.'])]
+    #[Assert\Length(['max'=>50, 'maxMessage' => 'Le prénom ne peut avoir plus de 50 caractères.'])]
     private $firstname;
 
     #[ORM\Column(type: 'string', length: 20)]

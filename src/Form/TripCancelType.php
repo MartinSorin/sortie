@@ -22,7 +22,7 @@ class TripCancelType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('motif', TextareaType::class, ['label' => 'Motif annulation', 'required' => false,'mapped' => false])
+            ->add('motif', TextareaType::class, ['label' => 'Motif annulation :', 'required' => false,'mapped' => false])
         ;
     }
 

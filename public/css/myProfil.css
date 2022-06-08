@@ -1,18 +1,19 @@
 h1{
+    font-size: 2.5em;
     text-align: center;
     color: #DDDDDD;
 }
 
 
 .blockPrincipale{
-    border: solid 1px purple;
-    width: 40%;
+    border: 1px purple;
+    width: 20%;
 
 }
 
 
 .global {
-    border: solid 1px #b80c09;
+    border: 1px #b80c09;
     display: flex;
     justify-content: center;
 
@@ -21,10 +22,11 @@ h1{
 }
 
 .block {
-    border: solid 1px blue;
+    border: 1px blue;
     display: flex;
     justify-content: space-between;
     font-size: 1.2em;
+
 
 }
 main{
@@ -45,6 +47,7 @@ main{
     color: #c2b8b2;
     margin-top: 10px;
     margin-bottom: 20px;
+    cursor: pointer;
 
 }
 

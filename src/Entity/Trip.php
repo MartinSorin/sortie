@@ -22,7 +22,7 @@ class Trip
     private $name;
 
     #[ORM\Column(type: 'datetime')]
-    #[Assert\NotBlank(message: "Votre sortie doit avoir une date et une heure de début.")]
+    #[Assert\NotBlank(message: "la sortie doit avoir une date et une heure de début.")]
     #[Assert\GreaterThan("today", message: "La date de début de l'activité doit être postérieure à aujourd'hui.")]
     private $dateTimeStart;
 
@@ -32,7 +32,7 @@ class Trip
     private $duration;
 
     #[ORM\Column(type: 'date')]
-    #[Assert\NotBlank(message: "Votre sortie doit avoir une date limite d'inscription.")]
+    #[Assert\NotBlank(message: "la sortie doit avoir une date limite d'inscription.")]
     #[Assert\LessThan(propertyPath:"dateTimeStart", message: "La date limite d'inscription doit être antérieure à la date de début.")]
     #[Assert\GreaterThanOrEqual("today", message: "La date limite d'inscription doit être postérieure à aujourd'hui.")]
     private $dateLimitInscription;

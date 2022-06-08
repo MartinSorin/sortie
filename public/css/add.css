@@ -1,5 +1,7 @@
 h2{
+    font-size: 2.5em;
     text-align: center;
+    color: #DDDDDD;
 }
 
 input, textarea, #trip_siteOrganiser, #trip_city, #trip_place{
@@ -39,6 +41,7 @@ input, textarea, #trip_siteOrganiser, #trip_city, #trip_place{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     font-size: 1.2em;
 }
 
