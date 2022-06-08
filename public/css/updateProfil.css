@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     border: 1px #b80c09;
+    width: 85%;
 }
 
 h1{
