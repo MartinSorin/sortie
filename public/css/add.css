@@ -110,3 +110,17 @@ li{
     padding-right: 5px;
     width: fit-content;
 }
+
+#place{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#place .divform{
+    padding: 0;
+}
+
+#place .divform p{
+    padding-right: 5px;
+}
