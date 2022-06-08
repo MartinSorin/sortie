@@ -36,7 +36,7 @@ class ParticipantType extends AbstractType
             ->add('isAffectedTo', EntityType::class, ['label' => 'Campus :', 'choice_label' => 'name', 'class' => 'App\Entity\Campus',
                 'required' => false, 'empty_data' => ''])
             ->add('imageProfile', FileType::class, [
-            'label' => 'Image de profil',
+            'label' => 'Image de profil :',
             // unmapped means that this field is not associated to any entity property
             'mapped' => false,
             // make it optional so you don't have to re-upload the PDF file
