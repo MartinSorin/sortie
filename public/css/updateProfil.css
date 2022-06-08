@@ -78,4 +78,5 @@ li{
 
 .imageProfile{
     float: left;
+    border-radius: 100%;
 }
