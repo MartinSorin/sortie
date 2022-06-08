@@ -35,6 +35,7 @@ class MainController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()){
             $trips = $tripRepository->filter($filter, $user, $stateRepository);
+            $tripsSorted = $tripRepository->sorted($stateRepository,$trips);
         }
 
         return $this->render('main/home.html.twig', [
