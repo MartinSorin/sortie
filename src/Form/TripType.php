@@ -30,7 +30,7 @@ class TripType extends AbstractType
             ->add('infoTrip', null, ['label' => 'Descriptions et infos : ', 'required' => false])
             ->add('siteOrganiser', EntityType::class, ['label' => 'Campus : ', 'choice_label' => 'name', 'class' => 'App\Entity\Campus', 'data' => $this->security->getUser()->getIsAffectedTo()])
             ->add('city', EntityType::class, ['label' => 'Ville : ', 'choice_label' => 'name', 'class' => 'App\Entity\City', 'mapped' => false])
-            ->add('place', EntityType::class, ['label' => 'Lieu : ', 'choice_label' => 'name', 'class' => 'App\Entity\Place', 'required' => false])
+            ->add('place', EntityType::class, ['label' => 'Lieu : ', 'choice_label' => 'name', 'class' => 'App\Entity\Place'])
 
         ;
     }

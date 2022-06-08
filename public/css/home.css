@@ -79,6 +79,7 @@ select, #filter_search, #filter_start, #filter_end{
     width: 120px;
     text-decoration: none;
     color: #c2b8b2;
+    cursor: pointer;
 }
 
 
