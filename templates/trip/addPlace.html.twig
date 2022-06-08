@@ -3,13 +3,14 @@
 {% block title %}Hello TripController!{% endblock %}
 
 {% block head %}
-    <link rel="stylesheet" href={{ asset('css/add.css') }}>{% endblock %}
+    <link rel="stylesheet" href={{ asset('css/addPlace.css') }}>{% endblock %}
 
 {% block main %}
 
+    <h1>Ajouter un lieu</h1>
+
+    <div class="block">
     {{ form_start(form) }}
-
-
     <div class="divform">
         {{ form_label(form.name) }}
         {{ form_widget(form.name) }}
@@ -26,8 +27,13 @@
         {{ form_label(form.longitude) }}
         {{ form_widget(form.longitude) }}
     </div>
-    {{ form_rest(form) }}
     <div class="divform">
+        {{ form_label(form.city) }}
+        {{ form_widget(form.city) }}
+    </div>
+    {{ form_rest(form) }}
+    </div>
+    <div class="button">
         <button type="submit" name="save" value="save">Enregistrer</button>
     </div>
 

@@ -44,14 +44,15 @@ class ParticipantController extends AbstractController
                     )
                 );
 
-                $repository->add($participant, true);
+
             }
             $imageprofile = $form->get('imageProfile')->getData();
             if ($imageprofile) {
                 $brochureFileName = $fileUploader->upload($imageprofile);
                 $participant->setImageProfile($brochureFileName);
-                $repository->add($participant, true);
             }
+
+            $repository->add($participant, true);
 
 
 

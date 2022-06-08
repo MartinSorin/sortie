@@ -1,0 +1,54 @@
+h1{
+    font-size: 2.5em;
+    text-align: center;
+    color: #DDDDDD;
+}
+
+.block{
+    border: 1px red;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+
+.divform{
+    border: 1px black;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px 30px;
+    width: 90%;
+
+}
+
+
+.divform a,.button button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: black solid 1px;
+    border-radius: 10px;
+    background-color: #b80c09;
+    height: 40px;
+    width: 120px;
+    text-decoration: none;
+    color: #c2b8b2;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+}
+
+input, select{
+    background-color: #c2b8b2;
+    height: 30px;
+    width: 200px;
+    border-radius: 10px;
+    border: 1px solid #2f323a;
+    padding-left: 5px;
+}

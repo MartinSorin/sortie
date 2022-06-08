@@ -64,6 +64,7 @@ input, textarea, #trip_siteOrganiser, #trip_city, #trip_place{
     color: #c2b8b2;
     margin-top: 10px;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 main{
