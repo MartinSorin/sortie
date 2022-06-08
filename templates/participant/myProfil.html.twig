@@ -8,6 +8,8 @@
 {% block main %}
     <h1> {{ participant.pseudo }}</h1>
 
+    <img class="imageProfile" src="{{ asset('img/' ~participant.imageProfile) }}" alt="Photo du profil">
+
     <div class="global">
 
         <div class="blockPrincipale">
@@ -40,7 +42,7 @@
                 <p>Campus :</p>
                 <p>{{ participant.isAffectedTo.name }}</p>
             </div>
-            <img class="imageProfile" src="{{ asset('img/' ~participant.imageProfile) }}" alt="Photo du profil">
+
         </div>
 
     </div>

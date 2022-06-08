@@ -13,6 +13,7 @@ h1{
 
 
 .global {
+    width: 82%;
     border: 1px #b80c09;
     display: flex;
     justify-content: center;
@@ -56,4 +57,8 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.imageProfile{
+    float: left;
 }

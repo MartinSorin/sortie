@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\Image;
 
 
 class ParticipantType extends AbstractType
@@ -44,10 +45,14 @@ class ParticipantType extends AbstractType
             // unmapped fields can't define their validation using annotations
             // in the associated entity, so you can use the PHP constraint classes
             'constraints' => [
-                new File([
+                new Image([
                     'maxSize' => '1024k',
                     'mimeTypes' => [
                         'image/*',
+                        'image/gif',
+                        'image/png',
+                        'image/webp',
+                        'image/jpeg',
                     ],
                     'mimeTypesMessage' => 'Veuillez charger une image',
                 ])
