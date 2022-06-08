@@ -22,21 +22,24 @@
 }
 main{
     min-height: calc(100vh - 245px);
-
 }
+
 .champselect{
     width: 46%;
 }
+
 .divform{
     padding: 16px;
     display: flex;
-
+    font-size: 1.2em;
 }
+
 form {
     display: block;
     margin-top: 0em;
     max-width: 964px;
 }
+
 .champ{
     height: 30px;
     width: 45%;
@@ -45,6 +48,7 @@ form {
     background-color: #c2b8b2;
     padding-left: 5px;
 }
+
 select{
     height: 30px;
     width: 49%;
@@ -53,6 +57,7 @@ select{
     background-color: #c2b8b2;
     padding-left: 5px;
 }
+
 .champdate input, .champdate select {
     height: 30px;
     width: 48%;
@@ -61,9 +66,11 @@ select{
     background-color: #c2b8b2;
     padding-left: 2px;
 }
+
 .champdate div{
     width: 50%;
 }
+
 .champdate{
     height: 30px;
     width: 46%;
@@ -73,9 +80,11 @@ select{
     padding-left: 0px;
     display: inline-flex;
 }
+
 div{
     text-align: -webkit-center;
 }
+
 label {
     align-items: center;
     display: flex;
@@ -84,6 +93,7 @@ label {
     font-size: 1.2em;
     padding-right: 5px;
 }
+
 h5{
     text-align: center;
     font-size: 1.2em;
@@ -92,8 +102,25 @@ h5{
 h2{
     font-size: 2.5em;
 }
-/*input , textarea{*/
-/*    display: inline-flex;*/
-/*    text-align: right;*/
-/*    justify-content: center;*/
-/*}*/
+
+.divBlock{
+    width: 60%;
+}
+
+.bigBlock{
+    display: flex;
+}
+
+#place{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#place .divform{
+    padding: 5px;
+}
+
+#place .divform p{
+    padding-right: 5px;
+}

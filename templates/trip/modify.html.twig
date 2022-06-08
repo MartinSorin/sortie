@@ -1,95 +1,102 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}} - Modification de sortie{% endblock %}
-{%block head%} <link rel="stylesheet" href={{asset('css/modify.css')}}>{%endblock%}
+{% block title %}{{ parent() }} - Modification de sortie{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href={{ asset('css/modify.css') }}>{% endblock %}
 {% block main %}
 
     <div>
         <h2>Modifier une sortie</h2>
 
         {{ form_start(form) }}
-        <div>
-        <div class="divform">
-            {{ form_label(form.name) }}
-            {{ form_widget(form.name) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.dateTimeStart) }}
-            {{ form_widget(form.dateTimeStart) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.dateLimitInscription) }}
-            {{ form_widget(form.dateLimitInscription) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.nbInscriptionsMax) }}
-            {{ form_widget(form.nbInscriptionsMax) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.duration) }}
-            {{ form_widget(form.duration) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.infoTrip) }}
-            {{ form_widget(form.infoTrip) }}
-        </div>
-        <div class="divform">
-            {{ form_label(form.siteOrganiser) }}
-            {{ form_widget(form.siteOrganiser) }}
-        </div>
+        <div class="bigBlock">
+            <div class="divBlock">
+                <div class="divform">
+                    {{ form_label(form.name) }}
+                    {{ form_widget(form.name) }}
+                </div>
+                <div class="divform">
+                    {{ form_label(form.dateTimeStart) }}
+                    {{ form_widget(form.dateTimeStart) }}
+                </div>
+                <div class="divform">
+                    {{ form_label(form.dateLimitInscription) }}
+                    {{ form_widget(form.dateLimitInscription) }}
+                </div>
+                <div class="divform">
+                    {{ form_label(form.nbInscriptionsMax) }}
+                    {{ form_widget(form.nbInscriptionsMax) }}
+                </div>
+                <div class="divform">
+                    {{ form_label(form.duration) }}
+                    {{ form_widget(form.duration) }}
+                </div>
+                <div class="divform">
+                    {{ form_label(form.infoTrip) }}
+                    {{ form_widget(form.infoTrip) }}
+                </div>
+            </div>
+            <div class="divBlock">
+                <div class="divform">
+                    {{ form_label(form.siteOrganiser) }}
+                    {{ form_widget(form.siteOrganiser) }}
+                </div>
 
-        <div class="divform">
-            {{ form_label(form.place) }}
-            {{ form_widget(form.place) }}
+                <div class="divform">
+                    {{ form_label(form.place) }}
+                    {{ form_widget(form.place) }}
+                    <input type="hidden" id="divPlace" data-url={{path('api_place')}}>
+                </div>
+
+                <div id ="place">
+
+                </div>
+
+            </div>
         </div>
-
-        <h5>Rue: {{trip.place.street}}</h5>
-        <h5>Code Postal: {{trip.place.city.postalCode}} {{trip.place.city.name}}</h5>
-
         <div class="divformbutton">
             {{ form_rest(form) }}
             <button type="submit" name="save" value="save">Enregistrer</button>
             <button type="submit" name="publish" value="publish">Publier la sortie</button>
             <button type="submit" name="remove" value="remove">Supprimer la sortie</button>
-            <a href={{path('home')}}>Annuler</a>
+            <a href={{ path('home') }}>Annuler</a>
         </div>
         {{ form_end(form) }}
-
 
 
     </div>
 
 {% endblock %}
-{%block script%}
+{% block script %}
     <script>
-        document.getElementById('trip_place').addEventListener('change', function (){
+        document.getElementById('trip_modify_place').addEventListener('change', function () {
 
-            let id = document.getElementById('trip_place').value
+            let id = document.getElementById('trip_modify_place').value
             let url = document.getElementById('divPlace').dataset.url
 
             console.log(id)
             console.log(url)
 
-            fetch(url, {method: 'POST', body: JSON.stringify({'id':id})})
+            fetch(url, {method: 'POST', body: JSON.stringify({'id': id})})
                 .then(function (response) {
                     return response.json()
                 }).then(function (data) {
 
                 let div = document.getElementById('place')
 
-                div.innerHTML= ""
+                div.innerHTML = ""
 
-                div.innerHTML ="<div class='divform'><p> Rue : </p><p>" + data.street + "</p></div>" +
-                    "<div class='divform'><p>Code postal : </p><p>" + data.postalCode + "</p></div>" +
-                    "<div class='divform'><p>Latitude : </p><p>" + data.latitude + "</p></div>" +
-                    "<div class='divform'><p>Longitude : </p><p>" + data.longitude + "</p></div>"
+                div.innerHTML = "<div class='divform'><p> Rue : </p> <p>" + data.street + "</p></div>" +
+                    "<div class='divform'><p>Code postal : </p> <p>" + data.postalCode + "</p></div>" +
+                    "<div class='divform'><p>Latitude : </p> <p>" + data.latitude + "</p></div>" +
+                    "<div class='divform'><p>Longitude : </p> <p>" + data.longitude + "</p></div>"
 
                 document.getElementById('place').appendChild(div)
             })
         })
 
         const e = new Event("change");
-        const element = document.querySelector('#trip_place')
+        const element = document.querySelector('#trip_modify_place')
         element.dispatchEvent(e);
     </script>
-{%endblock%}
+{% endblock %}
