@@ -136,6 +136,18 @@ class AppFixtures extends Fixture
         $participantMarti->setUsername('Marti');
         $this->manager->persist($participantMarti);
 
+        $participantMarti = new Participant();
+        $participantMarti->setName('Chotard');
+        $participantMarti->setFirstname('Maxence');
+        $participantMarti->setPhone('05 06 07 08 09');
+        $participantMarti->setEmail('maxence.chotard@campus-eni.fr');
+        $participantMarti->setPassword($this->encoder->hashPassword($participantCaly,'2335'));
+        $participantMarti->setActive(true);
+        $participantMarti->setIsAffectedTo($this->faker->randomElement($campus));
+        $participantMarti->setRoles('ROLE_ADMIN');
+        $participantMarti->setUsername('MaxLaMenace');
+        $this->manager->persist($participantMarti);
+
         for ($i = 0; $i < 4; $i++) {
             $participant[$i] = new Participant();
             $participant[$i]->setName($this->faker->lastName);

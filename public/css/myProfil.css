@@ -61,6 +61,6 @@ main{
 
 .imageProfile{
     float: left;
-    border-radius: 100%;
+    width: 100%;
 }
 
