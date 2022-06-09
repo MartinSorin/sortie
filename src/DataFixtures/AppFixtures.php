@@ -129,24 +129,24 @@ class AppFixtures extends Fixture
         $participantMarti->setFirstname('Martin');
         $participantMarti->setPhone('07 01 00 00 00');
         $participantMarti->setEmail('martin@mail.com');
-        $participantMarti->setPassword($this->encoder->hashPassword($participantCaly,'314'));
+        $participantMarti->setPassword($this->encoder->hashPassword($participantMarti,'314'));
         $participantMarti->setActive(true);
         $participantMarti->setIsAffectedTo($this->faker->randomElement($campus));
         $participantMarti->setRoles('ROLE_ADMIN');
         $participantMarti->setUsername('Marti');
         $this->manager->persist($participantMarti);
 
-        $participantMarti = new Participant();
-        $participantMarti->setName('Chotard');
-        $participantMarti->setFirstname('Maxence');
-        $participantMarti->setPhone('05 06 07 08 09');
-        $participantMarti->setEmail('maxence.chotard@campus-eni.fr');
-        $participantMarti->setPassword($this->encoder->hashPassword($participantCaly,'2335'));
-        $participantMarti->setActive(true);
-        $participantMarti->setIsAffectedTo($this->faker->randomElement($campus));
-        $participantMarti->setRoles('ROLE_ADMIN');
-        $participantMarti->setUsername('MaxLaMenace');
-        $this->manager->persist($participantMarti);
+        $participantMaxence = new Participant();
+        $participantMaxence->setName('Chotard');
+        $participantMaxence->setFirstname('Maxence');
+        $participantMaxence->setPhone('05 06 07 08 09');
+        $participantMaxence->setEmail('maxence.chotard@campus-eni.fr');
+        $participantMaxence->setPassword($this->encoder->hashPassword($participantMaxence,'2335'));
+        $participantMaxence->setActive(true);
+        $participantMaxence->setIsAffectedTo($this->faker->randomElement($campus));
+        $participantMaxence->setRoles('ROLE_ADMIN');
+        $participantMaxence->setUsername('MaxLaMenace');
+        $this->manager->persist($participantMaxence);
 
         for ($i = 0; $i < 4; $i++) {
             $participant[$i] = new Participant();
