@@ -16,9 +16,11 @@ h2{
     height: fit-content;
     flex-wrap: wrap;
 }
+
 main{
     min-height: calc(100vh - 245px);
 }
+
 .block{
     width: 400px;
     margin: 10px;
@@ -56,6 +58,8 @@ select, #filter_search, #filter_start, #filter_end{
     width: 100%;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 
 #blockSearch{
@@ -107,7 +111,7 @@ table{
 
 .tbl-content{
     height:300px;
-    overflow-x:auto;
+    overflow-x: auto;
     margin-top: 0px;
 }
 
@@ -150,4 +154,17 @@ td a{
     color: #c2b8b2;
     margin-top: 10px;
     margin-bottom: 20px;
+}
+
+label{
+    display: flex;
+    align-items: center;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#date label{
+    width: 85px;
+    display: flex;
+    justify-content: center;
 }
