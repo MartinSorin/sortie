@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - 404{% endblock %}
+
+{% block head %}<link rel="stylesheet" href={{ asset('css/error404.css') }}>{% endblock %}
+
+{% block main %}
+
+    <h1>Désolé une erreur est survenu.</h1>
+
+{% endblock %}

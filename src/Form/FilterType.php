@@ -15,9 +15,9 @@ class FilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('campus', EntityType::class, ['label' => 'Campus', 'choice_label' => 'name', 'class' => 'App\Entity\Campus', 'required' => false, 'attr' => ['placeholder' => 'Choisisez un campus']])
-            ->add('search', TextType::class, ['label' => 'Le nom de la sortie contient', 'required' => false, 'attr' => ['placeholder' => 'search']])
-            ->add('start', DateTimeType::class, ['label' => 'Entre', 'required' => false, 'widget' => 'single_text'])
+            ->add('campus', EntityType::class, ['label' => 'Campus : ', 'choice_label' => 'name', 'class' => 'App\Entity\Campus', 'required' => false, 'attr' => ['placeholder' => 'Choisisez un campus']])
+            ->add('search', TextType::class, ['label' => 'Le nom de la sortie contient : ', 'required' => false, 'attr' => ['placeholder' => 'search']])
+            ->add('start', DateTimeType::class, ['label' => 'Entre : ', 'required' => false, 'widget' => 'single_text'])
             ->add('end', DateTimeType::class, ['label' => 'et', 'required' => false, 'widget' => 'single_text'])
             ->add('organiser', CheckboxType::class, ['label' => 'Sorties dont je suis l\'organisateur/trice', 'required' => false])
             ->add('registered', CheckboxType::class, ['label' => 'Sorties auxquelles je suis inscrit/e', 'required' => false])
