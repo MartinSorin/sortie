@@ -111,7 +111,18 @@ class AppFixtures extends Fixture
         $campus = $this->manager->getRepository(Campus::class)->findAll();
         $user= new User();
         // on crée 4 auteurs avec noms et prénoms "aléatoires" en français
-        $participant = Array();
+
+        $participantCaly = new Participant();
+        $participantCaly->setName('Chevrier');
+        $participantCaly->setFirstname('Caly');
+        $participantCaly->setPhone('06 01 02 03 04');
+        $participantCaly->setEmail('chevrier.caroline@camps.fr');
+        $participantCaly->setPassword($this->encoder->hashPassword($participantCaly,'123456'));
+        $participantCaly->setActive(true);
+        $participantCaly->setIsAffectedTo($this->faker->randomElement($campus));
+        $participantCaly->setRoles('ROLE_ADMIN');
+        $participantCaly->setUsername('Caly');
+        $this->manager->persist($participantCaly);
 
         for ($i = 0; $i < 4; $i++) {
             $participant[$i] = new Participant();
