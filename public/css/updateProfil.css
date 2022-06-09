@@ -80,3 +80,40 @@ li{
     float: left;
     border-radius: 100%;
 }
+
+#participant_imageProfile{
+    background-color: transparent;
+    border: none;
+    width: 240px;
+    visibility: hidden;
+}
+
+input[type="file"] {
+    color: #c2b8b2;
+    position: absolute;
+    z-index: -1;
+    top: 5px;
+    left: 8px;
+}
+
+.button-wrap {
+    position: relative;
+    padding-left: 10px;
+}
+
+.upload{
+    height: 30px;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #c2b8b2;
+    color: black;
+}
+
+#upload{
+    display: flex;
+    justify-content: flex-start;
+}

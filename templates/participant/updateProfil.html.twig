@@ -60,9 +60,12 @@
             </div>
         {{ form_errors(form.isAffectedTo) }}
 
-        <div class="divform">
+        <div class="divform" id="upload">
             {{ form_label(form.imageProfile) }}
-            {{ form_widget(form.imageProfile) }}
+            <div class="button-wrap">
+                <label class="upload" for="participant_imageProfile">Parcourir</label>
+                {{ form_widget(form.imageProfile) }}
+            </div>
             {{ form_errors(form.imageProfile) }}</div>
 
 
