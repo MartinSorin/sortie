@@ -81,6 +81,15 @@ li{
     border-radius: 100%;
 }
 
+input [type="file" i] {
+    width: 25.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
 #participant_imageProfile{
     background-color: transparent;
     border: none;
